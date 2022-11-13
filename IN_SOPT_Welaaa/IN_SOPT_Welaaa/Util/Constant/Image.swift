@@ -36,6 +36,9 @@ public enum Image {
     
     // Search
     static let audioAds = UIImage(named: "audio_ads")!.preparingThumbnail(of: CGSize(width: 100, height: 30))!
+    static let indicator = UIImage(named: "indicator")!
+    static let bookImage = UIImage(named: "bookImage")!
+    static let searchRank = UIImage(named: "searchRank")!
     
     // Shelf
     

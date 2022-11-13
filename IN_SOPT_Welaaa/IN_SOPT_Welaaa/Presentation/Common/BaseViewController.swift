@@ -15,7 +15,16 @@ class BaseViewController: UIViewController {
         style()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        setNavigationBar()
+    }
+    
     func style() {
-        view.backgroundColor = Color.gray100
+        view.backgroundColor = .white
+    }
+    
+    func setNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }

@@ -41,6 +41,16 @@
 		ECA424FF291FCE5B004DFDAF /* UITabBar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA424FE291FCE5B004DFDAF /* UITabBar + Extension.swift */; };
 		ECA42501291FD2FC004DFDAF /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42500291FD2FC004DFDAF /* Mock.swift */; };
 		ECA42503291FD326004DFDAF /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42502291FD325004DFDAF /* UIView + Extension.swift */; };
+		ECA42505291FDE3E004DFDAF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42504291FDE3E004DFDAF /* SearchView.swift */; };
+		ECA42507291FDE55004DFDAF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42506291FDE55004DFDAF /* BaseView.swift */; };
+		ECA4250B291FE2F1004DFDAF /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4250A291FE2F1004DFDAF /* NavigationView.swift */; };
+		ECA4250D291FE488004DFDAF /* UITextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4250C291FE488004DFDAF /* UITextField + Extension.swift */; };
+		ECA42511291FEE52004DFDAF /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42510291FEE52004DFDAF /* KeywordCollectionViewCell.swift */; };
+		ECA4251329212ED5004DFDAF /* SearchWordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4251229212ED5004DFDAF /* SearchWordCollectionViewCell.swift */; };
+		ECA4251529212EEE004DFDAF /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4251429212EED004DFDAF /* CategoryCollectionViewCell.swift */; };
+		ECA4251829213BBB004DFDAF /* SearchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4251729213BBB004DFDAF /* SearchSectionView.swift */; };
+		ECA4251C2921562B004DFDAF /* SearchSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4251B2921562B004DFDAF /* SearchSection.swift */; };
+		ECA4251E2921569E004DFDAF /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4251D2921569E004DFDAF /* Name.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +106,16 @@
 		ECA424FE291FCE5B004DFDAF /* UITabBar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar + Extension.swift"; sourceTree = "<group>"; };
 		ECA42500291FD2FC004DFDAF /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		ECA42502291FD325004DFDAF /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		ECA42504291FDE3E004DFDAF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		ECA42506291FDE55004DFDAF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		ECA4250A291FE2F1004DFDAF /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		ECA4250C291FE488004DFDAF /* UITextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extension.swift"; sourceTree = "<group>"; };
+		ECA42510291FEE52004DFDAF /* KeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECA4251229212ED5004DFDAF /* SearchWordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWordCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECA4251429212EED004DFDAF /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECA4251729213BBB004DFDAF /* SearchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionView.swift; sourceTree = "<group>"; };
+		ECA4251B2921562B004DFDAF /* SearchSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSection.swift; sourceTree = "<group>"; };
+		ECA4251D2921569E004DFDAF /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA424C6291F8D54004DFDAF /* BaseViewController.swift */,
+				ECA42506291FDE55004DFDAF /* BaseView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -258,6 +279,7 @@
 				ECA424DC291FCB2D004DFDAF /* UIFont + Extension.swift */,
 				ECA424FE291FCE5B004DFDAF /* UITabBar + Extension.swift */,
 				ECA42502291FD325004DFDAF /* UIView + Extension.swift */,
+				ECA4250C291FE488004DFDAF /* UITextField + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -266,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA42500291FD2FC004DFDAF /* Mock.swift */,
+				ECA4251D2921569E004DFDAF /* Name.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -298,6 +321,9 @@
 		ECA424F1291FCC2F004DFDAF /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				ECA4251B2921562B004DFDAF /* SearchSection.swift */,
+				ECA4251F292158F0004DFDAF /* ViewController */,
+				ECA4251629212F21004DFDAF /* Cell */,
 				ECA424FA291FCCA6004DFDAF /* View */,
 			);
 			path = Search;
@@ -338,7 +364,9 @@
 		ECA424FA291FCCA6004DFDAF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ECA424FB291FCCAE004DFDAF /* SearchViewController.swift */,
+				ECA42504291FDE3E004DFDAF /* SearchView.swift */,
+				ECA4251729213BBB004DFDAF /* SearchSectionView.swift */,
+				ECA4250A291FE2F1004DFDAF /* NavigationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,6 +377,24 @@
 				ECA424B7291F8BAA004DFDAF /* HomeViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ECA4251629212F21004DFDAF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ECA42510291FEE52004DFDAF /* KeywordCollectionViewCell.swift */,
+				ECA4251229212ED5004DFDAF /* SearchWordCollectionViewCell.swift */,
+				ECA4251429212EED004DFDAF /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECA4251F292158F0004DFDAF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ECA424FB291FCCAE004DFDAF /* SearchViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,20 +547,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA4250B291FE2F1004DFDAF /* NavigationView.swift in Sources */,
 				ECA424DD291FCB2D004DFDAF /* UIFont + Extension.swift in Sources */,
 				ECA42488291F8B63004DFDAF /* AppDelegate.swift in Sources */,
 				ECA424F6291FCC77004DFDAF /* SettingViewController.swift in Sources */,
 				ECA424C7291F8D54004DFDAF /* BaseViewController.swift in Sources */,
 				ECA42503291FD326004DFDAF /* UIView + Extension.swift in Sources */,
 				ECA4248A291F8B63004DFDAF /* SceneDelegate.swift in Sources */,
+				ECA42505291FDE3E004DFDAF /* SearchView.swift in Sources */,
 				ECA424F9291FCC95004DFDAF /* ShelfViewController.swift in Sources */,
+				ECA4251329212ED5004DFDAF /* SearchWordCollectionViewCell.swift in Sources */,
+				ECA4251C2921562B004DFDAF /* SearchSection.swift in Sources */,
 				ECA424D3291F8E70004DFDAF /* TabBarController.swift in Sources */,
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
+				ECA4250D291FE488004DFDAF /* UITextField + Extension.swift in Sources */,
 				ECA424FC291FCCAE004DFDAF /* SearchViewController.swift in Sources */,
 				ECA424DB291FCB14004DFDAF /* Font.swift in Sources */,
 				ECA424D7291F92D9004DFDAF /* Color.swift in Sources */,
+				ECA4251E2921569E004DFDAF /* Name.swift in Sources */,
+				ECA4251829213BBB004DFDAF /* SearchSectionView.swift in Sources */,
+				ECA4251529212EEE004DFDAF /* CategoryCollectionViewCell.swift in Sources */,
 				ECA42501291FD2FC004DFDAF /* Mock.swift in Sources */,
 				ECA424FF291FCE5B004DFDAF /* UITabBar + Extension.swift in Sources */,
+				ECA42507291FDE55004DFDAF /* BaseView.swift in Sources */,
+				ECA42511291FEE52004DFDAF /* KeywordCollectionViewCell.swift in Sources */,
 				ECA424B8291F8BAA004DFDAF /* HomeViewController.swift in Sources */,
 				ECA424CD291F8DFD004DFDAF /* Image.swift in Sources */,
 			);
