@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2F67A14292490BF009A959C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A13292490BF009A959C /* HomeView.swift */; };
+		D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A1529249143009A959C /* HomeNavigationView.swift */; };
 		ECA42488291F8B63004DFDAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42487291F8B63004DFDAF /* AppDelegate.swift */; };
 		ECA4248A291F8B63004DFDAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42489291F8B63004DFDAF /* SceneDelegate.swift */; };
 		ECA42491291F8B64004DFDAF /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA42490291F8B64004DFDAF /* Image.xcassets */; };
@@ -71,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2F67A13292490BF009A959C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D2F67A1529249143009A959C /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		ECA42484291F8B63004DFDAF /* IN_SOPT_Welaaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IN_SOPT_Welaaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA42487291F8B63004DFDAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECA42489291F8B63004DFDAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2F67A112924909F009A959C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ECA424B7291F8BAA004DFDAF /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D2F67A12292490A9009A959C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		ECA4247B291F8B63004DFDAF = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +260,8 @@
 		ECA424C8291F8D7C004DFDAF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D2F67A12292490A9009A959C /* Cell */,
+				D2F67A112924909F009A959C /* ViewController */,
 				ECA424FD291FCCC3004DFDAF /* View */,
 			);
 			path = Home;
@@ -374,7 +395,8 @@
 		ECA424FD291FCCC3004DFDAF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ECA424B7291F8BAA004DFDAF /* HomeViewController.swift */,
+				D2F67A1529249143009A959C /* HomeNavigationView.swift */,
+				D2F67A13292490BF009A959C /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -547,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F67A14292490BF009A959C /* HomeView.swift in Sources */,
 				ECA4250B291FE2F1004DFDAF /* NavigationView.swift in Sources */,
 				ECA424DD291FCB2D004DFDAF /* UIFont + Extension.swift in Sources */,
 				ECA42488291F8B63004DFDAF /* AppDelegate.swift in Sources */,
@@ -560,6 +583,7 @@
 				ECA4251C2921562B004DFDAF /* SearchSection.swift in Sources */,
 				ECA424D3291F8E70004DFDAF /* TabBarController.swift in Sources */,
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
+				D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */,
 				ECA4250D291FE488004DFDAF /* UITextField + Extension.swift in Sources */,
 				ECA424FC291FCCAE004DFDAF /* SearchViewController.swift in Sources */,
 				ECA424DB291FCB14004DFDAF /* Font.swift in Sources */,

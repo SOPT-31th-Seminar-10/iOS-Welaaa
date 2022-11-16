@@ -31,7 +31,8 @@ public enum Image {
     static let settingInactive = UIImage(named: "ic_setting_inactive")!
     static let logo = UIImage(named: "logo")!
     static let play = UIImage(named: "play")!.preparingThumbnail(of: CGSize(width: 150, height: 30))!
-    
+    static let home_ad_large = UIImage(named: "home_ad_large")!
+    static let home_ad_small = UIImage(named: "home_ad_small")!
     // Home
     
     // Search
