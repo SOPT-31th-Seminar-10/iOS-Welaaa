@@ -19,20 +19,20 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //registerCollectionView()
+        registerCollectionView()
         
     }
 }
 
-//extension HomeViewController {
-//
-//    private func registerCollectionView() {
-//
-//        homeView.collectionView.delegate = self
-//        homeView.collectionView.dataSource = self
-//    }
-//}
-//
-//extension HomeViewController: UICollectionViewDelegate {}
-//
-//extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController {
+
+    private func registerCollectionView() {
+
+        homeView.collectionView.delegate = self
+        homeView.collectionView.dataSource = self
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {}
+
+extension HomeViewController: UICollectionViewDataSource {

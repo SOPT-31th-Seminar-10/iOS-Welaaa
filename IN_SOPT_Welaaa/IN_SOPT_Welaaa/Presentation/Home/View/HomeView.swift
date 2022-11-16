@@ -13,11 +13,12 @@ import Then
 final class HomeView: BaseView {
     
     private lazy var homeNavigationView = HomeNavigationView()
+    private lazy var homeAdView = HomeAdView()
     
     
     
     override func setupView() {
-        [homeNavigationView].forEach{
+        [homeNavigationView, homeAdView].forEach{
             addSubview($0)
         }
     }
@@ -26,30 +27,15 @@ final class HomeView: BaseView {
         
         homeNavigationView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
-            $0.height.equalTo(66)
             $0.width.equalToSuperview()
+            $0.height.equalTo(66)
+        }
+        
+        homeAdView.snp.makeConstraints {
+            $0.top.equalTo(self.homeNavigationView.snp.bottom)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(406)
         }
     }
     
 }
-
-
-
-
-
-//
-//private var scrollView = UIScrollView()
-//
-//
-//
-//private var pagerTab = UIView().then {
-//    $0.backgroundColor = .black
-//}
-//
-//private var homeAdLargeImage = UIImageView().then {
-//    $0.image = Image.home_ad_large
-//}
-//
-//private var homaAdSmallImage = UIImageView().then {
-//    $0.image = Image.home_ad_small
-//}

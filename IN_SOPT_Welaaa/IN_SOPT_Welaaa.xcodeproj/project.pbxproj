@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D2F67A14292490BF009A959C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A13292490BF009A959C /* HomeView.swift */; };
 		D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A1529249143009A959C /* HomeNavigationView.swift */; };
+		D2F67A182924A28B009A959C /* HomeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A172924A28A009A959C /* HomeAdView.swift */; };
 		ECA42488291F8B63004DFDAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42487291F8B63004DFDAF /* AppDelegate.swift */; };
 		ECA4248A291F8B63004DFDAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA42489291F8B63004DFDAF /* SceneDelegate.swift */; };
 		ECA42491291F8B64004DFDAF /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA42490291F8B64004DFDAF /* Image.xcassets */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		D2F67A13292490BF009A959C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D2F67A1529249143009A959C /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
+		D2F67A172924A28A009A959C /* HomeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdView.swift; sourceTree = "<group>"; };
 		ECA42484291F8B63004DFDAF /* IN_SOPT_Welaaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IN_SOPT_Welaaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA42487291F8B63004DFDAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECA42489291F8B63004DFDAF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			children = (
 				D2F67A1529249143009A959C /* HomeNavigationView.swift */,
 				D2F67A13292490BF009A959C /* HomeView.swift */,
+				D2F67A172924A28A009A959C /* HomeAdView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
 				D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */,
 				ECA4250D291FE488004DFDAF /* UITextField + Extension.swift in Sources */,
+				D2F67A182924A28B009A959C /* HomeAdView.swift in Sources */,
 				ECA424FC291FCCAE004DFDAF /* SearchViewController.swift in Sources */,
 				ECA424DB291FCB14004DFDAF /* Font.swift in Sources */,
 				ECA424D7291F92D9004DFDAF /* Color.swift in Sources */,
