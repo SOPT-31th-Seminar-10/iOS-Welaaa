@@ -9,14 +9,14 @@ import Foundation
 
 enum HomeSection: Int, Equatable {
     case playlist
-    case author
+    case recommand
     case voice
     case category
 
     init(index: Int) {
         switch index {
         case 0: self = .playlist
-        case 1: self = .author
+        case 1: self = .recommand
         case 2: self = .voice
         default: self = .playlist
         }
@@ -26,7 +26,7 @@ enum HomeSection: Int, Equatable {
         switch self {
         case .playlist:
             return "듣고 있던 오디오북! 계속 들어볼까요?"
-        case .author:
+        case .recommand:
             return "인기 저자 / 강사"
         case .voice:
             return "인기 성우"

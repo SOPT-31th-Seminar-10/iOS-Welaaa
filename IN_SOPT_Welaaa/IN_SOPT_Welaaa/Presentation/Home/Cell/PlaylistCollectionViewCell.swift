@@ -22,8 +22,6 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     
     private lazy var playlistView = UIView().then {
         $0.backgroundColor = .white
-        $0.layer.borderWidth = 3
-        $0.layer.borderColor = UIColor.black.cgColor
     }
     
     private lazy var titleLabel = UILabel().then{
@@ -66,6 +64,7 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
             playlistView.addSubview($0)
         }
     }
+    
     private func setConstraints() {
         
         bookImage.snp.makeConstraints{

@@ -25,80 +25,118 @@ final class HomeViewController: BaseViewController {
 }
 
 extension HomeViewController {
-    
+
     private func registerCollectionView() {
-        homeView.collectionView.delegate = self
-        homeView.collectionView.dataSource = self
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegate {}
-
-
-extension HomeViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
-    }
-    
-    
-    // 지정된 섹션에 표시할 항목의 개수를 묻는 메소드
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-        switch section {
-            
-        case 0:
-            return playlistDummyData.count
-        case 1:
-            return 0
-        case 2:
-            return 0
-        default:
-            return 0
-        }
-        
-    }
-    
-    // 컬렉션 뷰에 지정된 위치에 표시할 셀을 요청하는 메소드
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section{
-        case 0:
-            guard let playlistcell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {return UICollectionViewCell()}
-            playlistcell.dataBind(model: playlistDummyData[indexPath.item])
-            return playlistcell
-        default:
-            guard let playlistcell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {return UICollectionViewCell()}
-            playlistcell.dataBind(model: playlistDummyData[indexPath.item])
-            return playlistcell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
- 
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: HomeSectionView.identifier,
-            for: indexPath
-        ) as? HomeSectionView else { return UICollectionReusableView() }
-        
-        headerView.setTitle(text: HomeSection(index: indexPath.section).headerTitle)
-        
-        return headerView
+        homeView.playlistCollectionView.registerCollectionView()
+        homeView.recommandAudioBookCollecionView.registerCollectionView()
     }
 }
 
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case 0:
-            return CGSize(width: 220, height: 105)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//extension HomeViewController: UICollectionViewDelegate {}
+//
+//
+//extension HomeViewController: UICollectionViewDataSource {
+//
+//
+//
+//
+//    // 지정된 섹션에 표시할 항목의 개수를 묻는 메소드
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//
+//
+//    }
+//
+//    // 컬렉션 뷰에 지정된 위치에 표시할 셀을 요청하는 메소드
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+////        case 0:
+////
+////
+////        case 1:
+////            guard let recommandcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {return UICollectionViewCell()}
+////            recommandcell.dataBind(model: recommandDummyData[indexPath.item])
+////            return recommandcell
+////
+////        default:
+////            guard let recommandcell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {return UICollectionViewCell()}
+////            recommandcell.dataBind(model: recommandDummyData[indexPath.item])
+////            return recommandcell
+//        }
+//    }
+//
+////    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+////
+////        guard let headerView = collectionView.dequeueReusableSupplementaryView(
+////            ofKind: kind,
+////            withReuseIdentifier: HomeSectionView.identifier,
+////            for: indexPath
+////        ) as? HomeSectionView else { return UICollectionReusableView() }
+////
+////        headerView.setTitle(text: HomeSection(index: indexPath.section).headerTitle)
+////
+////        return headerView
+////    }
+////}
+//
+//
+//extension HomeViewController: UICollectionViewDelegateFlowLayout {
+//
+////    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+////        return CGSize(width: UIScreen.main.bounds.width, height: 40)
+////    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        switch indexPath.section {
+//        case 0:
+//            return CGSize(width: 220, height: 105)
 //        case 1:
-//        case 2:
-        default:
-            return CGSize(width: 0, height: 0)
-        }
-        
-    }
-}
+//            return CGSize(width: 105, height: 200)
+////        case 2:
+//        default:
+//            return CGSize(width: 0, height: 0)
+//        }
+//
+//    }
+//}

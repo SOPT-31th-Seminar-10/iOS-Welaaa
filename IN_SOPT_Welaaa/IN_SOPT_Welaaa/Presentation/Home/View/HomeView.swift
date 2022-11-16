@@ -13,28 +13,19 @@ import Then
 final class HomeView: BaseView {
     
     private lazy var scrollView = UIScrollView().then{
-        $0.isScrollEnabled = true
-        $0.backgroundColor = .white
-        
+        $0.backgroundColor = .black
     }
     
     private lazy var homeNavigationView = HomeNavigationView()
     private lazy var homeAdView = HomeAdView()
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        $0.backgroundColor = .white
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-        
-        $0.register(PlaylistCollectionViewCell.self, forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier )
-        
-    }
+    lazy var playlistCollectionView = PlaylistCollectionView()
+    lazy var recommandAudioBookCollecionView = RecommandAudioBookCollectionView()
+    
     
     override func setupView() {
         addSubview(scrollView)
         
-        [homeNavigationView, homeAdView, collectionView].forEach{
+        [homeNavigationView, homeAdView, playlistCollectionView, recommandAudioBookCollecionView].forEach{
             scrollView.addSubview($0)
         }
     }
@@ -42,12 +33,11 @@ final class HomeView: BaseView {
     override func setupConstraints() {
         
         scrollView.snp.makeConstraints{
-            $0.edges.equalTo(safeAreaLayoutGuide)
-            
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
         homeNavigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.width.equalToSuperview()
             $0.height.equalTo(66)
         }
@@ -58,11 +48,18 @@ final class HomeView: BaseView {
             $0.height.equalTo(406)
         }
         
-        collectionView.snp.makeConstraints {
+        playlistCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.homeAdView.snp.bottom).offset(53)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(playlistDummyData.count * 220)
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-10)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(105)
+        }
+        
+        recommandAudioBookCollecionView.snp.makeConstraints{
+            $0.top.equalTo(self.playlistCollectionView.snp.bottom)
+            $0.leading.equalTo(self.playlistCollectionView)
+            $0.width.equalToSuperview()
+            $0.bottom.equalTo(safeAreaInsets)
         }
     }
     
