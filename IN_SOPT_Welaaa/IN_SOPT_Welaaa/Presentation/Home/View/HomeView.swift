@@ -34,6 +34,7 @@ final class HomeView: BaseView {
         
         scrollView.snp.makeConstraints{
             $0.edges.equalTo(self.safeAreaLayoutGuide)
+            $0.height.equalTo(10000)
         }
         
         homeNavigationView.snp.makeConstraints {
