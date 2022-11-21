@@ -21,4 +21,3 @@ var seriesDummyData: [SeriesModel] = [
     SeriesModel(bookImage: "달러구트", title: "거짓말", author: "거짓말"),
     SeriesModel(bookImage: "달러구트", title: "거짓말", author: "거짓말")
 ]
-

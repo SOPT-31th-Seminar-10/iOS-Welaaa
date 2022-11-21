@@ -69,7 +69,23 @@ final class BookInformationView: BaseView {
     }
     
     private var infoAuthorLabel = UILabel().then {
-        $0.text = "산야에 공자는 어디 얼마나 운다. 뭇 웅대한 무엇을 영원히 지혜는 것이다. 풀이 온갖 품었기 싹이 봄바람이다. 천하를 밝은 산야에 거친 없으면, 천고에 없으면 기관과 말이다. 보배를 주며, 있을 산야에 현저하게 천지는 것이다. 할지라도 그들의 새 있는가? 가는 뼈 뜨고, 실현에 대중을 만물은 온갖 봄바람이다. 능히 인생을 그러므로 얼마나 곳으로 청춘에서만 사람은 부패를 앞이 것이다. 이것은 같은 소담스러운 역사를 전인 보라.일월과 미묘한 남는 꾸며 갑 곳이 바이며, 끓는다. 길을 목숨을 것은 산야에 그림자는 찾아다녀도, 것은 미묘한 희망의 아니다. 하여도 그들의 위하여, 끝에 끓는다. 이상이 피에 다. 이상이 피"
+        $0.text = """
+    산야에 공자는 어디 얼마나 운다. 뭇 웅대한 무엇을 영원히 지
+    혜는 것이다. 풀이 온갖 품었기 싹이 봄바람이다. 천하를 밝은
+    산야에 거친 없으면, 천고에 없으면 기관과 말이다. 보배를 주
+    며, 있을 산야에 현저하게 천지는 것이다. 할지라도 그들의 새
+    있는가? 가는 뼈 뜨고, 실현에 대중을 만물은 온갖 봄바람이다.
+     능히 인생을 그러므로 얼마나 곳으로 청춘에서만 사람은 부패
+    를 앞이 것이다. 이것은 같은 소담스러운 역사를 전인 보라.일
+    월과 미묘한 남는 꾸며 갑 곳이 바이며, 끓는다. 길을 목숨을 것
+    은 산야에 그림자는 찾아다녀도, 것은 미묘한 희망의 아니다.
+     하여도 그들의 위하여, 끝에 끓는다. 이상이 피에 다. 이상이 피
+    """
+        let attrString = NSMutableAttributedString(string: $0.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        $0.attributedText = attrString
         $0.numberOfLines = 10;
         $0.font = UIFont.font(.pretendardRegular, ofSize: 14)
         $0.textColor = Color.gray800

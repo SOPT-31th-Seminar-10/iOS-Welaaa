@@ -31,22 +31,7 @@ final class BookDetailTableViewCell: UITableViewCell {
         $0.backgroundColor = .blue
     }
     
-//    UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//
-//        $0.translatesAutoresizingMaskIntoConstraints = false
-//        $0.isScrollEnabled = true
-//        $0.backgroundColor = .white
-//        $0.showsHorizontalScrollIndicator = false
-//        $0.collectionViewLayout = layout
-//        //        $0.delegate = self
-//        //        $0.dataSource = self
-//    }
-    //
-        private lazy var detailedInformationCell = DetailedInformationView()
-    //
-    //    private lazy var recommandContentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    //    UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
     //        let layout = UICollectionViewFlowLayout()
     //        layout.scrollDirection = .horizontal
     //
@@ -55,9 +40,12 @@ final class BookDetailTableViewCell: UITableViewCell {
     //        $0.backgroundColor = .white
     //        $0.showsHorizontalScrollIndicator = false
     //        $0.collectionViewLayout = layout
-    ////        $0.delegate = self
-    ////        $0.dataSource = self
+    //        //        $0.delegate = self
+    //        //        $0.dataSource = self
     //    }
+    private lazy var detailedInformationCell = DetailedInformationView()
+    
+    private lazy var recommandContentCollectionView = RecommandContentCollectionView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,8 +60,8 @@ final class BookDetailTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        [bookIntroductionCell, pagerTab, seriesCollectionView, bookImageCollectionView,bookInformationCell,relatedKeywordCollectionView,detailedInformationCell].forEach { addSubview($0) }
-        // ,recommandContentCollectionView
+        [bookIntroductionCell, pagerTab, seriesCollectionView, bookImageCollectionView,bookInformationCell,relatedKeywordCollectionView,detailedInformationCell ,recommandContentCollectionView].forEach { addSubview($0) }
+        
     }
     
     private func setConstraints() {
@@ -126,13 +114,13 @@ final class BookDetailTableViewCell: UITableViewCell {
             $0.width.equalTo(335)
             $0.height.equalTo(147)
         }
-        //
-        //        recommandContentCollectionView.snp.makeConstraints{
-        //            $0.top.equalTo(self.detailedInformationCell.snp.bottom).offset(40)
-        //            $0.leading.equalTo(20)
-        //            $0.width.equalTo(355)
-        //            $0.height.equalTo(safeAreaInsets)
-        //        }
+        
+        recommandContentCollectionView.snp.makeConstraints{
+            $0.top.equalTo(self.detailedInformationCell.snp.bottom).offset(40)
+            $0.leading.equalTo(20)
+            $0.width.equalTo(355)
+            $0.height.equalTo(219)
+        }
         
     }
 }
@@ -143,11 +131,10 @@ extension SeriesCollectionView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
 extension SeriesCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommandAudioBookDummyData.count
+        return seriesDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -168,13 +155,33 @@ extension BookImageCollectionView: UICollectionViewDelegateFlowLayout {
 extension BookImageCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return seriesDummyData.count
+        return bookImageDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookImageCollectionViewCell.identifier, for: indexPath) as? BookImageCollectionViewCell else {return UICollectionViewCell()}
-        cell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        cell.dataBind(model: bookImageDummyData[indexPath.row])
         return cell
     }
 }
 
+
+extension RecommandContentCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 105, height: 200)
+    }
+}
+
+extension RecommandContentCollectionView: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return seriesDummyData.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
+        cell.dataBind(model: seriesDummyData[indexPath.row])
+        return cell
+    }
+}

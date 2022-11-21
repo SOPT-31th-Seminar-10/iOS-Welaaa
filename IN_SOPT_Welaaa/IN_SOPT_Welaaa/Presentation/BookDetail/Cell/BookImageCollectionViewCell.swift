@@ -49,7 +49,7 @@ class BookImageCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func dataBind(model: RecommandAudioBookModel){
+    func dataBind(model: BookImageModel){
         bookImage.image = UIImage(named: model.bookImage)
     }
 }

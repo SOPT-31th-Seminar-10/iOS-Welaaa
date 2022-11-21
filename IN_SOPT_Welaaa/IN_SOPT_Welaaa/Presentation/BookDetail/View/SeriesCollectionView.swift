@@ -24,8 +24,6 @@ final class SeriesCollectionView: BaseView {
         $0.delegate = self
         $0.dataSource = self
         
-        $0.backgroundColor = .blue
-        
         $0.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
     }
     

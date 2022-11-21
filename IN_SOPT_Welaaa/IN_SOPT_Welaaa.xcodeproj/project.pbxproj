@@ -12,7 +12,7 @@
 		D2CE47C529292A86004D51F0 /* BookIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */; };
 		D2CE47C729292ABB004D51F0 /* BookInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47C629292ABB004D51F0 /* BookInformationView.swift */; };
 		D2CE47CB29292B00004D51F0 /* DetailedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47CA29292B00004D51F0 /* DetailedInformationView.swift */; };
-		D2CE47CD29292B5B004D51F0 /* RecommandContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47CC29292B5B004D51F0 /* RecommandContentView.swift */; };
+		D2CE47CD29292B5B004D51F0 /* RecommandContentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47CC29292B5B004D51F0 /* RecommandContentCollectionView.swift */; };
 		D2CE47D129294462004D51F0 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47D029294462004D51F0 /* BookDetailViewController.swift */; };
 		D2CE47D329295223004D51F0 /* BookDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47D229295223004D51F0 /* BookDetailTableViewCell.swift */; };
 		D2CE47D52929532E004D51F0 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47D42929532E004D51F0 /* SeriesModel.swift */; };
@@ -101,7 +101,7 @@
 		D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookIntroductionView.swift; sourceTree = "<group>"; };
 		D2CE47C629292ABB004D51F0 /* BookInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInformationView.swift; sourceTree = "<group>"; };
 		D2CE47CA29292B00004D51F0 /* DetailedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInformationView.swift; sourceTree = "<group>"; };
-		D2CE47CC29292B5B004D51F0 /* RecommandContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandContentView.swift; sourceTree = "<group>"; };
+		D2CE47CC29292B5B004D51F0 /* RecommandContentCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandContentCollectionView.swift; sourceTree = "<group>"; };
 		D2CE47D029294462004D51F0 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D2CE47D229295223004D51F0 /* BookDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D2CE47D42929532E004D51F0 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
@@ -239,11 +239,11 @@
 			children = (
 				D2CE47C229292A27004D51F0 /* BookDetailView.swift */,
 				D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */,
+				D2CE47DC292B4C7A004D51F0 /* BookImageCollectionView.swift */,
 				D2CE47C629292ABB004D51F0 /* BookInformationView.swift */,
 				D2CE47CA29292B00004D51F0 /* DetailedInformationView.swift */,
-				D2CE47CC29292B5B004D51F0 /* RecommandContentView.swift */,
+				D2CE47CC29292B5B004D51F0 /* RecommandContentCollectionView.swift */,
 				D2CE47DA292B3CAD004D51F0 /* SeriesCollectionView.swift */,
-				D2CE47DC292B4C7A004D51F0 /* BookImageCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -715,7 +715,7 @@
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
 				D2CE47C529292A86004D51F0 /* BookIntroductionView.swift in Sources */,
 				D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */,
-				D2CE47CD29292B5B004D51F0 /* RecommandContentView.swift in Sources */,
+				D2CE47CD29292B5B004D51F0 /* RecommandContentCollectionView.swift in Sources */,
 				ECA4250D291FE488004DFDAF /* UITextField + Extension.swift in Sources */,
 				D2F67A182924A28B009A959C /* HomeAdView.swift in Sources */,
 				D2CE47D329295223004D51F0 /* BookDetailTableViewCell.swift in Sources */,

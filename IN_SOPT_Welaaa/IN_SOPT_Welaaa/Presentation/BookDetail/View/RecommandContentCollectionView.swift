@@ -1,8 +1,8 @@
 //
-//  BookImageCollectionView.swift
+//  RecommandContentView.swift
 //  IN_SOPT_Welaaa
 //
-//  Created by 류희재 on 2022/11/21.
+//  Created by 류희재 on 2022/11/20.
 //
 
 import UIKit
@@ -10,9 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class BookImageCollectionView: BaseView {
-    lazy var collectionView =
-    UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+final class RecommandContentCollectionView: BaseView {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -24,7 +23,7 @@ final class BookImageCollectionView: BaseView {
         $0.delegate = self
         $0.dataSource = self
         
-        $0.register(BookImageCollectionViewCell.self, forCellWithReuseIdentifier: BookImageCollectionViewCell.identifier)
+        $0.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
     }
     
     override func setupView() {
@@ -36,6 +35,5 @@ final class BookImageCollectionView: BaseView {
             $0.edges.equalToSuperview()
         }
     }
-    
 }
 
