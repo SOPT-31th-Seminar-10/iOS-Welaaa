@@ -67,7 +67,7 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func dataBind(model: RecommandAudioBookModel){
+    func dataBind(model: SeriesModel){
         bookImage.image = UIImage(named: model.bookImage)
         titleLabel.text = model.title
         authorLabel.text = model.author

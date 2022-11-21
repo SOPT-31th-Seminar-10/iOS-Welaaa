@@ -23,19 +23,7 @@ final class BookDetailTableViewCell: UITableViewCell {
     lazy var seriesCollectionView = SeriesCollectionView()
     
     
-    lazy var bookImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isScrollEnabled = true
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-        $0.delegate = self
-        $0.dataSource = self
-        
-        $0.register(BookImageCollectionViewCell.self, forCellWithReuseIdentifier: BookImageCollectionViewCell.identifier)
-    }
+    lazy var bookImageCollectionView = BookImageCollectionView()
     
     private lazy var bookInformationCell = BookInformationView()
     
@@ -165,22 +153,22 @@ extension SeriesCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
-        cell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        cell.dataBind(model: seriesDummyData[indexPath.row])
         return cell
     }
 }
 
-extension BookDetailTableViewCell: UICollectionViewDelegateFlowLayout {
+extension BookImageCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 200)
+        return CGSize(width: 335, height: 258)
     }
 }
 
 
-extension BookDetailTableViewCell: UICollectionViewDataSource {
+extension BookImageCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommandAudioBookDummyData.count
+        return seriesDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
