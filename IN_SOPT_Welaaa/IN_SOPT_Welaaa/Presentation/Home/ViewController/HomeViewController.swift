@@ -30,7 +30,11 @@ extension HomeViewController {
     }
 }
 
-extension HomeView: UITableViewDelegate {}
+extension HomeView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 10000
+    }
+}
 
 extension HomeView: UITableViewDataSource {
 
@@ -41,6 +45,5 @@ extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell()}
         return cell
-        
     }
 }

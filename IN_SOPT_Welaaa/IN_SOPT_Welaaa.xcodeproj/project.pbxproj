@@ -21,6 +21,8 @@
 		D2CE47DB292B3CAE004D51F0 /* SeriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47DA292B3CAD004D51F0 /* SeriesCollectionView.swift */; };
 		D2CE47DD292B4C7A004D51F0 /* BookImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47DC292B4C7A004D51F0 /* BookImageCollectionView.swift */; };
 		D2CE47DF292B4E24004D51F0 /* BookImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47DE292B4E24004D51F0 /* BookImageModel.swift */; };
+		D2CE47E5292B5D9D004D51F0 /* RecommandAudioBookCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47E4292B5D9D004D51F0 /* RecommandAudioBookCollectionView.swift */; };
+		D2CE47E7292B5DB0004D51F0 /* PlaylistCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47E6292B5DB0004D51F0 /* PlaylistCollectionView.swift */; };
 		D2F67A14292490BF009A959C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A13292490BF009A959C /* HomeView.swift */; };
 		D2F67A1629249143009A959C /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A1529249143009A959C /* HomeNavigationView.swift */; };
 		D2F67A182924A28B009A959C /* HomeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F67A172924A28A009A959C /* HomeAdView.swift */; };
@@ -110,6 +112,8 @@
 		D2CE47DA292B3CAD004D51F0 /* SeriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCollectionView.swift; sourceTree = "<group>"; };
 		D2CE47DC292B4C7A004D51F0 /* BookImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageCollectionView.swift; sourceTree = "<group>"; };
 		D2CE47DE292B4E24004D51F0 /* BookImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageModel.swift; sourceTree = "<group>"; };
+		D2CE47E4292B5D9D004D51F0 /* RecommandAudioBookCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommandAudioBookCollectionView.swift; sourceTree = "<group>"; };
+		D2CE47E6292B5DB0004D51F0 /* PlaylistCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionView.swift; sourceTree = "<group>"; };
 		D2F67A13292490BF009A959C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D2F67A1529249143009A959C /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		D2F67A172924A28A009A959C /* HomeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdView.swift; sourceTree = "<group>"; };
@@ -514,6 +518,8 @@
 				D2F67A13292490BF009A959C /* HomeView.swift */,
 				D2F67A172924A28A009A959C /* HomeAdView.swift */,
 				D2F67A242924D90C009A959C /* HomeSectionView.swift */,
+				D2CE47E4292B5D9D004D51F0 /* RecommandAudioBookCollectionView.swift */,
+				D2CE47E6292B5DB0004D51F0 /* PlaylistCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -721,11 +727,13 @@
 				D2CE47D329295223004D51F0 /* BookDetailTableViewCell.swift in Sources */,
 				D2CE47CB29292B00004D51F0 /* DetailedInformationView.swift in Sources */,
 				D2F67A1C2924ADA7009A959C /* RecommandAudioBookCollectionViewCell.swift in Sources */,
+				D2CE47E5292B5D9D004D51F0 /* RecommandAudioBookCollectionView.swift in Sources */,
 				ECA424FC291FCCAE004DFDAF /* SearchViewController.swift in Sources */,
 				D2CE47DB292B3CAE004D51F0 /* SeriesCollectionView.swift in Sources */,
 				ECA424DB291FCB14004DFDAF /* Font.swift in Sources */,
 				ECA424D7291F92D9004DFDAF /* Color.swift in Sources */,
 				ECA4251E2921569E004DFDAF /* Name.swift in Sources */,
+				D2CE47E7292B5DB0004D51F0 /* PlaylistCollectionView.swift in Sources */,
 				ECA4251829213BBB004DFDAF /* SearchSectionView.swift in Sources */,
 				ECA4251529212EEE004DFDAF /* CategoryCollectionViewCell.swift in Sources */,
 				D2CE47D9292B2DC5004D51F0 /* SeriesColletionViewCell.swift in Sources */,

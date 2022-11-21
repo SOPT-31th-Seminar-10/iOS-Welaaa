@@ -18,37 +18,9 @@ final class HomeTableViewCell: UITableViewCell {
     
     private lazy var homeAdCell = HomeAdView()
     
-    lazy var playCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isScrollEnabled = true
-        $0.backgroundColor = .white
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-//        $0.delegate = self
-//        $0.dataSource = self
-        
-        $0.register(PlaylistCollectionViewCell.self,
-                    forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
-    }
+    lazy var playlistCollectionView = PlaylistCollectionView()
     
-    lazy var recommandAudioBookCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isScrollEnabled = true
-        $0.backgroundColor = .white
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-//        $0.delegate = self
-//        $0.dataSource = self
-        
-        $0.register(RecommandAudioBookCollectionViewCell.self,
-                    forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
-    }
+    lazy var recommandAudioBookCollectionView = RecommandAudioBookCollectionView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,6 +28,9 @@ final class HomeTableViewCell: UITableViewCell {
         
         setupView()
         setConstraints()
+        
+        playlistCollectionView.collectionView.register(PlaylistCollectionViewCell.self,
+                                                                         forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
     }
     
     
@@ -66,14 +41,13 @@ final class HomeTableViewCell: UITableViewCell {
     
     
     private func setupView() {
-        [homeNavigationCell, homeAdCell, playCollectionView, recommandAudioBookCollectionView]
+        [homeNavigationCell, homeAdCell, playlistCollectionView, recommandAudioBookCollectionView]
             .forEach { addSubview($0) }
     }
     
     private func setConstraints() {
         
         homeNavigationCell.snp.makeConstraints {
-            
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.width.equalToSuperview()
@@ -87,21 +61,65 @@ final class HomeTableViewCell: UITableViewCell {
             $0.height.equalTo(406)
         }
         
-        playCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+        playlistCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.homeAdCell.snp.bottom).offset(53)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalToSuperview()
-            $0.height.equalTo(105)
+            $0.width.equalTo(355)
+            $0.height.equalTo(149)
         }
         
-        recommandAudioBookCollectionView.snp.makeConstraints{
-            $0.top.equalTo(self.playCollectionView.snp.bottom)
-            $0.leading.equalTo(self.playCollectionView)
-            $0.width.equalToSuperview()
-            $0.bottom.equalTo(safeAreaInsets)
+        recommandAudioBookCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.playlistCollectionView.snp.bottom).offset(52)
+            $0.leading.equalTo(self.playlistCollectionView)
+            $0.width.equalTo(355)
+            $0.bottom.equalTo(244)
         }
     }
 }
+
+
+extension PlaylistCollectionView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 220, height: 105)
+    }
+}
+
+
+extension PlaylistCollectionView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return playlistDummyData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let playlistCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
+            return UICollectionViewCell()}
+        playlistCell.dataBind(model: playlistDummyData[indexPath.row])
+        return playlistCell
+    }
+}
+
+
+extension RecommandAudioBookCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 105, height: 200)
+    }
+}
+
+extension RecommandAudioBookCollectionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recommandAudioBookDummyData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let recommandAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
+            return UICollectionViewCell()}
+        recommandAudioBookCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        return recommandAudioBookCell
+    }
+}
+
 
 //extension HomeTableViewCell: UICollectionViewDelegate {}
 //extension HomeTableViewCell: UICollectionViewDelegateFlowLayout {
@@ -128,7 +146,7 @@ final class HomeTableViewCell: UITableViewCell {
 //        case 0:
 //            return playlistDummyData.count
 //        case 1:
-//            return recommandAudioBookDummyData.count
+//
 //        default:
 //            return 0
 //        }
@@ -142,13 +160,11 @@ final class HomeTableViewCell: UITableViewCell {
 //            playlistCell.dataBind(model: playlistDummyData[indexPath.row])
 //            return playlistCell
 //        case 1:
-//            guard let recommandAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
-//                return UICollectionViewCell()}
-//            recommandAudioBookCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
-//            return recommandAudioBookCell
+//
 //        default:
 //            return UICollectionViewCell()
 //
 //        }
 //    }
 //}
+
