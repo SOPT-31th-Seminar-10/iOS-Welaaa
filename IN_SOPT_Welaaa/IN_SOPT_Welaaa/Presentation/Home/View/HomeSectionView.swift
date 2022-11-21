@@ -26,9 +26,9 @@ final class HomeSectionView: UICollectionReusableView {
         setupView()
         setupConstraints()
     }
-
-    required init(coder: NSCoder) {
-        fatalError("SearchSectionView: fatal error")
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupView() {

@@ -16,7 +16,6 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     
     private lazy var bookImage = UIImageView().then {
         $0.backgroundColor = .white
-        $0.makeRounded(radius: 37)
         $0.makeColorRounded(37, 3, Color.green)
     }
     
@@ -49,60 +48,54 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         setConstraints()
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
     private func setupView() {
-        [playlistView, bookImage].forEach{
-            contentView.addSubview($0)
-        }
+        [playlistView, bookImage]
+            .forEach { contentView.addSubview($0) }
         
-        [titleLabel,authorLabel, progressLabel].forEach{
-            playlistView.addSubview($0)
-        }
+        [titleLabel, authorLabel, progressLabel]
+            .forEach { playlistView.addSubview($0) }
     }
     
     private func setConstraints() {
         
-        bookImage.snp.makeConstraints{
+        bookImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.size.equalTo(80)
         }
         
-        playlistView.snp.makeConstraints{
+        playlistView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
             $0.leading.equalToSuperview().offset(22)
             $0.width.equalTo(198)
             $0.height.equalTo(64)
         }
         
-        titleLabel.snp.makeConstraints{
+        titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(9)
             $0.leading.equalTo(self.bookImage.snp.trailing).offset(22)
         }
         
-        authorLabel.snp.makeConstraints{
+        authorLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom)
             $0.leading.equalTo(self.titleLabel)
         }
         
-        progressLabel.snp.makeConstraints{
+        progressLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom)
             $0.leading.equalTo(self.authorLabel.snp.trailing).offset(22)
         }
-        
     }
     
-    func dataBind(model: PlaylistModel){
+    func dataBind(model: PlaylistModel) {
         bookImage.image = UIImage(named: model.bookImage ?? "")
         titleLabel.text = model.title
         authorLabel.text = model.author
-        
         progressLabel.text = model.progress
-        
     }
 }

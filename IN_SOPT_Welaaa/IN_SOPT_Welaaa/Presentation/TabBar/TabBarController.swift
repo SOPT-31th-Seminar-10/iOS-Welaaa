@@ -64,7 +64,8 @@ extension TabBarController {
         tabs = [
             HomeViewController(),
             SearchViewController(),
-            ShelfViewController(),
+            BookDetailViewController(),
+            // ShelfViewController(),
             SettingViewController()
         ]
         

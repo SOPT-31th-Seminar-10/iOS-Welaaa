@@ -21,9 +21,8 @@ final class HomeNavigationView: BaseView {
     }
     
     override func setupView() {
-        [logoImage, alertButton].forEach{
-            addSubview($0)
-        }
+        [logoImage, alertButton]
+            .forEach { addSubview($0) }
     }
     
     override func setupConstraints() {
@@ -43,6 +42,6 @@ final class HomeNavigationView: BaseView {
         }
     }
 }
-    
-    
-    
+
+
+

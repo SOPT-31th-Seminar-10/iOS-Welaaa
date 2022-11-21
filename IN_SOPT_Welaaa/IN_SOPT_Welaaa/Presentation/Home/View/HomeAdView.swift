@@ -17,11 +17,11 @@ final class HomeAdView: BaseView {
     }
     
     private var homeAdLargeImage = UIImageView().then {
-        $0.image = Image.home_ad_large
+        $0.image = Image.homeAdsLarge
     }
     
     private var homeAdSmallImage = UIImageView().then {
-        $0.image = Image.home_ad_small
+        $0.image = Image.homeAdsSmall
     }
 
     override func setupView() {
@@ -34,12 +34,14 @@ final class HomeAdView: BaseView {
         
         pagerTab.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalTo(40)
         }
         
         homeAdLargeImage.snp.makeConstraints{
             $0.top.equalTo(self.pagerTab.snp.bottom)
+            $0.leading.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalTo(260)
         }
