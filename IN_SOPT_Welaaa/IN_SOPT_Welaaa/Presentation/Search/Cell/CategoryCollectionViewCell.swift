@@ -79,7 +79,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     func update(category: [CategoryData], indexPath: IndexPath) {
      
         self.titleLabel.text = category[indexPath.row].category
-        self.subtitleLabel.text = category[indexPath.row].datumDescription
+        self.subtitleLabel.text = category[indexPath.row].description
         
         guard let url = URL(string: category[indexPath.row].image) else { return }
         let resource = ImageResource(downloadURL: url)
