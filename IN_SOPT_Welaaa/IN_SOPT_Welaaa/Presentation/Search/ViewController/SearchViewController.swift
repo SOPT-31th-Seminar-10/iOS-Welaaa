@@ -14,7 +14,7 @@ final class SearchViewController: BaseViewController {
     private var authorDummy = Name.authorDummy()
     private var actorDummy = Name.actorDummy()
     
-    private var categoryData = [CategoryData(id: 0, category: "", datumDescription: "", image: "")] {
+    private var categoryData = [CategoryData(id: 0, category: "", description: "", image: "")] {
         didSet {
             searchView.collectionView.reloadData()
         }
