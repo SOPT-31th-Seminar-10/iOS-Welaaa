@@ -14,14 +14,21 @@ final class SearchViewController: BaseViewController {
     private var authorDummy = Name.authorDummy()
     private var actorDummy = Name.actorDummy()
     
+    private var categoryData = [CategoryData(id: 0, category: "", description: "", image: "")] {
+        didSet {
+            searchView.collectionView.reloadData()
+        }
+    }
+    
     override func loadView() {
         self.view = searchView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         registerCollectionView()
+        getCategory()
     }
 }
 
@@ -53,7 +60,7 @@ extension SearchViewController: UICollectionViewDataSource {
         case 2:
             return actorDummy.count
         default:
-            return 10
+            return categoryData.count
         }
     }
     
@@ -79,12 +86,17 @@ extension SearchViewController: UICollectionViewDataSource {
         default:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
             
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                cell.update(category: self.categoryData, indexPath: indexPath)
+            }
+          
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
- 
+        
         guard let headerView = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: SearchSectionView.identifier,
@@ -102,7 +114,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 40)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         switch indexPath.section {
@@ -115,5 +127,30 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         default:
             return CGSize(width: UIScreen.main.bounds.width - 40, height: 95)
         }
+    }
+}
+
+extension SearchViewController {
+    
+    func getCategory() {
+        
+        CategoryAPI.shared.getCategory(completion: { (response) in
+            
+            switch response {
+            case .success(let data):
+                
+                if let data = data as? [CategoryData] {
+                    self.categoryData = data
+                }
+            case .requestErr(let message):
+                print("requestErr", message)
+            case .pathErr:
+                print(".pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        })
     }
 }

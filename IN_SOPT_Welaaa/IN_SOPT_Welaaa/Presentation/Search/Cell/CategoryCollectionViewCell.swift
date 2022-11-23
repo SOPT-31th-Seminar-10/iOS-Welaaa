@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class CategoryCollectionViewCell: UICollectionViewCell {
     
@@ -20,19 +21,15 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel = UILabel().then {
         $0.textColor = Color.gray900
-        $0.text = "전체"
         $0.font = UIFont.font(.pretendardSemibold, ofSize: 20)
     }
     
     private lazy var subtitleLabel = UILabel().then {
         $0.textColor = Color.gray400
-        $0.text = "윌라의 오디오북을 한꺼번에 볼 수 있어.."
         $0.font = UIFont.font(.pretendardRegular, ofSize: 14)
     }
     
-    private lazy var bookImage = UIImageView().then {
-        $0.image = Image.bookImage
-    }
+    private lazy var bookImage = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,5 +75,15 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(1)
         }
     }
-}
+    
+    func update(category: [CategoryData], indexPath: IndexPath) {
+     
+        self.titleLabel.text = category[indexPath.row].category
+        self.subtitleLabel.text = category[indexPath.row].description
+        
+        guard let url = URL(string: category[indexPath.row].image) else { return }
+        let resource = ImageResource(downloadURL: url)
 
+        self.bookImage.kf.setImage(with: resource)
+    }
+}

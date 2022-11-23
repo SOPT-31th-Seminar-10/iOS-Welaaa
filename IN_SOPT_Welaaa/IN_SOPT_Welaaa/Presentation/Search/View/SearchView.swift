@@ -12,6 +12,9 @@ import Then
 
 final class SearchView: BaseView {
     
+    
+    
+    
     private lazy var navigationView = NavigationView()
   
     lazy var collectionView = UICollectionView(frame: .zero,
