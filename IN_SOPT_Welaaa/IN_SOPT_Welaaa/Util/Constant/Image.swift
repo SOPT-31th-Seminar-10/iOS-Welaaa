@@ -37,6 +37,7 @@ public enum Image {
     static let homePagerTabAudioBookPart = UIImage(named: "home_pagerTab_audioBookPart")
     static let homePagerTabWebNovelPart = UIImage(named: "home_pagerTab_webNovelPart")
     static let homePagerTabClassPart = UIImage(named: "home_pagerTab_classPart")
+    static let homePlaylistPlayButton = UIImage(named: "home_playlist_playButton")
     // Home
     
     // Search

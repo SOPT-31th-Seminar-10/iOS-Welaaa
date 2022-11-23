@@ -5,13 +5,6 @@
 //  Created by 류희재 on 2022/11/16.
 //
 
-//
-//  RecommandAudioBookCollectionViewCell.swift
-//  IN_SOPT_Welaaa
-//
-//  Created by 류희재 on 2022/11/17.
-//
-
 import UIKit
 
 import SnapKit
@@ -73,15 +66,15 @@ final class MonthAudioBookCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints{
             $0.top.equalTo(self.bookImage.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
-            //$0.width.equalTo(163)
-            //$0.height.equalT0(21)
+            $0.width.equalTo(163)
+            $0.height.equalTo(21)
         }
         
         authorLabel.snp.makeConstraints{
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
-            //$0.width.equalTo(163)
-            //$0.height.equalT0(21)
+            $0.width.equalTo(163)
+            $0.height.equalTo(21)
         }
         
         infoBookLabel.snp.makeConstraints{

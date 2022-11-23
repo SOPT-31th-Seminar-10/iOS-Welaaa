@@ -11,7 +11,6 @@ final class HomeViewController: BaseViewController {
     
     private lazy var homeView = HomeView()
     
-    
     override func loadView() {
         self.view = homeView
     }
@@ -19,10 +18,8 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()
-        
     }
 }
-
 
 extension HomeViewController {
     private func registerTableView() {
@@ -37,7 +34,6 @@ extension HomeView: UITableViewDelegate {
 }
 
 extension HomeView: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }

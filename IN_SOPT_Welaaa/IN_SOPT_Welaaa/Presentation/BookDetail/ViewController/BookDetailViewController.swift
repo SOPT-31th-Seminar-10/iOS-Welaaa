@@ -11,7 +11,6 @@ final class BookDetailViewController: BaseViewController {
     
     private lazy var bookDetailView = BookDetailView()
     
-    
     override func loadView() {
         self.view = bookDetailView
     }

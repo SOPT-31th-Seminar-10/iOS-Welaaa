@@ -23,6 +23,10 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         $0.backgroundColor = .white
     }
     
+    private lazy var playlistButton = UIImageView().then {
+        $0.image = Image.homePlaylistPlayButton
+    }
+    
     private lazy var titleLabel = UILabel().then{
         $0.textColor = Color.gray900
         $0.textAlignment = .left
@@ -54,7 +58,7 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     
     
     private func setupView() {
-        [playlistView, bookImage]
+        [playlistView, bookImage, playlistButton]
             .forEach { contentView.addSubview($0) }
         
         [titleLabel, authorLabel, progressLabel]
@@ -74,6 +78,13 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().offset(22)
             $0.width.equalTo(198)
             $0.height.equalTo(64)
+        }
+        
+        playlistButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(29)
+            $0.leading.equalToSuperview().offset(65)
+            $0.width.equalTo(24)
+            $0.height.equalTo(24)
         }
         
         titleLabel.snp.makeConstraints {

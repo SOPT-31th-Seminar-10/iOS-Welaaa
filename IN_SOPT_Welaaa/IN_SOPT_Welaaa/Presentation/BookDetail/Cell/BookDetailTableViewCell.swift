@@ -182,7 +182,6 @@ final class BookDetailTableViewCell: UITableViewCell {
             $0.width.equalTo(355)
             $0.height.equalTo(219)
         }
-        
     }
 }
 
@@ -239,63 +238,3 @@ extension BookDetailTableViewCell: UICollectionViewDataSource {
         }
     }
 }
-
-
-//extension SeriesCollectionView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 105, height: 200)
-//    }
-//}
-//
-//extension SeriesCollectionView: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return seriesDummyData.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
-//        cell.dataBind(model: seriesDummyData[indexPath.row])
-//        return cell
-//    }
-//}
-//
-//extension BookImageCollectionView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 335, height: 258)
-//    }
-//}
-//
-//
-//extension BookImageCollectionView: UICollectionViewDataSource {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return bookImageDummyData.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookImageCollectionViewCell.identifier, for: indexPath) as? BookImageCollectionViewCell else {return UICollectionViewCell()}
-//        cell.dataBind(model: bookImageDummyData[indexPath.row])
-//        return cell
-//    }
-//}
-//
-//
-//extension RecommandContentCollectionView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 105, height: 200)
-//    }
-//}
-//
-//extension RecommandContentCollectionView: UICollectionViewDataSource {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return seriesDummyData.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
-//        cell.dataBind(model: seriesDummyData[indexPath.row])
-//        return cell
-//    }
-//}
