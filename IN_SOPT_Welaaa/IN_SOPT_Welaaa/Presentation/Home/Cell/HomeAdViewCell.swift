@@ -10,7 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeAdView: BaseView {
+final class HomeAdViewCell: UITableViewCell {
+    
+    static let identifier = "HomeAdView"
     
     private var pagerTab = UIView()
     
@@ -33,8 +35,18 @@ final class HomeAdView: BaseView {
     private var homeAdSmallImage = UIImageView().then {
         $0.image = Image.homeAdsSmall
     }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    override func setupView() {
+    private func setupView() {
         [pagerTab, homeAdLargeImage, homeAdSmallImage].forEach{
             addSubview($0)
         }
@@ -44,7 +56,7 @@ final class HomeAdView: BaseView {
         }
     }
     
-    override func setupConstraints() {
+    private func setupConstraints() {
         
         pagerTab.snp.makeConstraints {
             $0.top.equalToSuperview()

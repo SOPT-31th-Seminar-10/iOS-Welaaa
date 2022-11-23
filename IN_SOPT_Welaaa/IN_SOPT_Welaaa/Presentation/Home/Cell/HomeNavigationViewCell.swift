@@ -10,7 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeNavigationView: BaseView {
+final class HomeNavigationViewCell: UITableViewCell {
+    
+    static let identifier = "HomeNavigationView"
     
     private lazy var logoImage = UIImageView().then{
         $0.image = Image.logo
@@ -20,12 +22,22 @@ final class HomeNavigationView: BaseView {
         $0.setImage(Image.alert, for: .normal)
     }
     
-    override func setupView() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
         [logoImage, alertButton]
             .forEach { addSubview($0) }
     }
     
-    override func setupConstraints() {
+    private func setupConstraints() {
         
         logoImage.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)

@@ -10,18 +10,30 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeFooterAdView: BaseView {
+final class HomeFooterAdViewCell: UITableViewCell {
+    
+    static let identifier = "HomeFooterAdView"
     
     private var homeFooterAdImage = UIImageView().then {
         $0.image = Image.homeAdsFooter
     }
     
-    override func setupView() {
+    private func setupView() {
         addSubview(homeFooterAdImage)
     }
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
     
-    override func setupConstraints() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func setupConstraints() {
         homeFooterAdImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

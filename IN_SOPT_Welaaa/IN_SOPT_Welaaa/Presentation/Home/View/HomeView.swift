@@ -12,10 +12,8 @@ import Then
 
 final class HomeView: BaseView {
     
-    lazy var homeTablewView = UITableView(frame: .zero, style: .grouped).then{
+    lazy var homeTableView = UITableView(frame: .zero, style: .grouped).then{
         $0.backgroundColor = .white
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
         
@@ -24,12 +22,15 @@ final class HomeView: BaseView {
     }
     
     override func setupView() {
-        addSubview(homeTablewView)
+        addSubview(homeTableView)
     }
     
     override func setupConstraints() {
-        homeTablewView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        homeTableView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview()
         }
     }
 }

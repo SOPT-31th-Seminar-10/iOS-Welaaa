@@ -40,6 +40,7 @@ extension BookDetailView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookDetailTableViewCell.identifier, for: indexPath) as? BookDetailTableViewCell else { return UITableViewCell()}
+        cell.selectionStyle = .none
         return cell
     }
 }

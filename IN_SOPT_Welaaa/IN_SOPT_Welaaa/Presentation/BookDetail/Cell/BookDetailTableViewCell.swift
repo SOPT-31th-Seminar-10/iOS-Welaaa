@@ -14,6 +14,8 @@ final class BookDetailTableViewCell: UITableViewCell {
     
     static let identifier = "BookDetailTableViewCell"
     
+    private var keywordDummy = Name.keywordDummy()
+    
     private lazy var bookIntroductionCell = BookIntroductionView()
     
     private lazy var seriesCollectionViewHeaderLabel = UILabel().then {
@@ -53,22 +55,20 @@ final class BookDetailTableViewCell: UITableViewCell {
     
     private lazy var bookInformationCell = BookInformationView()
     
-    private lazy var relatedKeywordCollectionView = UIView().then {
-        $0.backgroundColor = .blue
+    private lazy var relatedKeywordCollectionView =     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = true
+        $0.backgroundColor = .white
+        $0.showsHorizontalScrollIndicator = false
+        $0.collectionViewLayout = layout
+        $0.delegate = self
+        $0.dataSource = self
     }
     
-    //    UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-    //        let layout = UICollectionViewFlowLayout()
-    //        layout.scrollDirection = .horizontal
-    //
-    //        $0.translatesAutoresizingMaskIntoConstraints = false
-    //        $0.isScrollEnabled = true
-    //        $0.backgroundColor = .white
-    //        $0.showsHorizontalScrollIndicator = false
-    //        $0.collectionViewLayout = layout
-    //        //        $0.delegate = self
-    //        //        $0.dataSource = self
-    //    }
+    
     private lazy var detailedInformationCell = DetailedInformationView()
     
     private lazy var recommandContentCollectionViewHeaderLabel = UILabel().then {
@@ -109,6 +109,8 @@ final class BookDetailTableViewCell: UITableViewCell {
         seriesCollectionView.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
         
         bookImageCollectionView.register(BookImageCollectionViewCell.self, forCellWithReuseIdentifier: BookImageCollectionViewCell.identifier)
+        
+        relatedKeywordCollectionView.register(RelatedKeywordCollectionViewCell.self, forCellWithReuseIdentifier: RelatedKeywordCollectionViewCell.identifier)
         
         recommandContentCollectionView.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
     }
@@ -190,21 +192,36 @@ extension BookDetailTableViewCell: UICollectionViewDelegateFlowLayout {
         switch collectionView {
         case seriesCollectionView:
             return CGSize(width: 105, height: 200)
+            
         case bookImageCollectionView:
             return CGSize(width: 335, height: 258)
+            
+        case relatedKeywordCollectionView:
+            guard let cell = relatedKeywordCollectionView.dequeueReusableCell(withReuseIdentifier: RelatedKeywordCollectionViewCell.identifier, for: indexPath) as? RelatedKeywordCollectionViewCell else {
+                        return .zero
+                    }
+                    cell.keywordLabel.text = keywordDummy[indexPath.row].name
+                    // ✅ sizeToFit() : 텍스트에 맞게 사이즈가 조절
+                    cell.keywordLabel.sizeToFit()
+
+                    // ✅ cellWidth = 글자수에 맞는 UILabel 의 width + 20(여백)
+                    let cellWidth = cell.keywordLabel.frame.width + 20
+
+                    return CGSize(width: cellWidth, height: 30)
+            
         case recommandContentCollectionView:
             return CGSize(width: 105, height: 200)
+            
         default:
             return CGSize(width: 0, height: 0)
         }
-        
     }
 }
 
 extension BookDetailTableViewCell: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
@@ -213,7 +230,10 @@ extension BookDetailTableViewCell: UICollectionViewDataSource {
         case 1:
             return bookImageDummyData.count
         case 2:
+            return keywordDummy.count
+        case 3:
             return seriesDummyData.count
+            
         default:
             return 0
         }
@@ -225,14 +245,22 @@ extension BookDetailTableViewCell: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
             cell.dataBind(model: seriesDummyData[indexPath.row])
             return cell
+            
         case bookImageCollectionView:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookImageCollectionViewCell.identifier, for: indexPath) as? BookImageCollectionViewCell else {return UICollectionViewCell()}
             cell.dataBind(model: bookImageDummyData[indexPath.row])
             return cell
+            
+        case relatedKeywordCollectionView:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelatedKeywordCollectionViewCell.identifier, for: indexPath) as? RelatedKeywordCollectionViewCell else {return UICollectionViewCell()}
+            cell.configureUI(name: keywordDummy[indexPath.row])
+            return cell
+            
         case recommandContentCollectionView:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
             cell.dataBind(model: seriesDummyData[indexPath.row])
             return cell
+            
         default:
             return UICollectionViewCell()
         }

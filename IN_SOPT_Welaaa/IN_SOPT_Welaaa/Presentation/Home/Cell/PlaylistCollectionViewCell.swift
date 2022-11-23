@@ -15,12 +15,14 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     static let identifier = "PlaylistCollectionViewCell"
     
     private lazy var bookImage = UIImageView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = Color.white
         $0.makeColorRounded(37, 3, Color.green)
     }
     
     private lazy var playlistView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = Color.white
+        $0.makeRounded(radius: 8)
+        $0.layer.applySketchShadow(color: .black, alpha: 0.1, x: 0, y: 0, blur: 4, spread: 0)
     }
     
     private lazy var playlistButton = UIImageView().then {
@@ -90,16 +92,22 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(9)
             $0.leading.equalTo(self.bookImage.snp.trailing).offset(22)
+            $0.width.equalTo(106)
+            $0.height.equalTo(24)
         }
         
         authorLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom)
             $0.leading.equalTo(self.titleLabel)
+            $0.width.equalTo(56)
+            $0.height.equalTo(22)
         }
         
         progressLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom)
             $0.leading.equalTo(self.authorLabel.snp.trailing).offset(22)
+            $0.width.equalTo(29)
+            $0.height.equalTo(22)
         }
     }
     

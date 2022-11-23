@@ -21,10 +21,12 @@ struct AudioBookModel {
 var recommandAudioBookDummyData: [AudioBookModel] = [
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: ""),
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: ""),
+    AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: ""),
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: "")
 ]
 
 var monthAudioBookDummyData: [AudioBookModel] = [
+    AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: "아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아"),
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: "아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아"),
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: "아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아"),
     AudioBookModel(bookImage: "달러구트", title: "거짓말", author: "거짓말", infoLabel: "아아아아아아아아아아아아아아아아아아아아아아아아아아아아아아")
