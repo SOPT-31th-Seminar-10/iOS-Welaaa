@@ -33,6 +33,7 @@ public enum Image {
     static let play = UIImage(named: "play")!.preparingThumbnail(of: CGSize(width: 150, height: 30))!
     static let homeAdsLarge = UIImage(named: "home_ad_large")!
     static let homeAdsSmall = UIImage(named: "home_ad_small")!
+    static let homeAdsFooter = UIImage(named: "home_ad_footer")!
     // Home
     
     // Search

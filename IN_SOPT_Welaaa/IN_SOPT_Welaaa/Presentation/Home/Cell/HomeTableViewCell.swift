@@ -26,6 +26,7 @@ final class HomeTableViewCell: UITableViewCell {
     
     lazy var recentlyAudioBookCollectionView = RecentlyAudioBookColletionView()
     
+    lazy var homeFooterAdCell = HomeFooterAdView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,7 +43,7 @@ final class HomeTableViewCell: UITableViewCell {
     
     
     private func setupView() {
-        [homeNavigationCell, homeAdCell, playlistCollectionView, recommandAudioBookCollectionView, monthAudioBookCollectionView, recentlyAudioBookCollectionView]
+        [homeNavigationCell, homeAdCell, playlistCollectionView, recommandAudioBookCollectionView, monthAudioBookCollectionView, recentlyAudioBookCollectionView, homeFooterAdCell]
             .forEach { addSubview($0) }
     }
     
@@ -88,7 +89,13 @@ final class HomeTableViewCell: UITableViewCell {
             $0.leading.equalTo(self.playlistCollectionView)
             $0.width.equalTo(355) //450
              $0.height.equalTo(244)
-            
+        }
+        
+        homeFooterAdCell.snp.makeConstraints {
+            $0.top.equalTo(self.recentlyAudioBookCollectionView.snp.bottom).offset(56)
+            $0.leading.equalTo(self.playlistCollectionView)
+            $0.width.equalTo(335)
+            $0.height.equalTo(204)
         }
     }
 }
