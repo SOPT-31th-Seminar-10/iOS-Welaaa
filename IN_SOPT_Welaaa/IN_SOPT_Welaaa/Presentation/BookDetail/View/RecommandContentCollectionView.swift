@@ -24,6 +24,8 @@ final class RecommandContentCollectionView: BaseView {
         $0.dataSource = self
         
         $0.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
+        
+//        $0.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: CollectionHeaderView.identifier)
     }
     
     override func setupView() {

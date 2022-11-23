@@ -1,8 +1,8 @@
 //
-//  SeriesCollectionView.swift
+//  RecentlyAudioBookColletionView.swift
 //  IN_SOPT_Welaaa
 //
-//  Created by 류희재 on 2022/11/21.
+//  Created by 류희재 on 2022/11/23.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SeriesCollectionView: BaseView {
+final class RecentlyAudioBookColletionView: BaseView {
     lazy var collectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
@@ -24,9 +24,8 @@ final class SeriesCollectionView: BaseView {
         $0.delegate = self
         $0.dataSource = self
         
-        $0.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
-        
-        $0.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: CollectionHeaderView.identifier)
+        $0.register(RecommandAudioBookCollectionViewCell.self,
+                    forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
     }
     
     override func setupView() {
@@ -38,5 +37,5 @@ final class SeriesCollectionView: BaseView {
             $0.edges.equalToSuperview()
         }
     }
-    
 }
+

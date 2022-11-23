@@ -82,8 +82,8 @@ final class BookDetailTableViewCell: UITableViewCell {
         
         seriesCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.pagerTab.snp.bottom).offset(39)
-            $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(355)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(1000)
             $0.height.equalTo(219)
         }
         
@@ -129,19 +129,30 @@ extension SeriesCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 105, height: 200)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        let width: CGFloat = 335
+//        let height: CGFloat = 21
+//        return CGSize(width: width, height: height)
+//    }
 }
 
 extension SeriesCollectionView: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return seriesDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
         cell.dataBind(model: seriesDummyData[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderView.identifier, for: indexPath) as! CollectionHeaderView
+
+        headerview.setTitle(text: "[시리즈] 파친코")
+        return headerview
     }
 }
 
@@ -173,15 +184,22 @@ extension RecommandContentCollectionView: UICollectionViewDelegateFlowLayout {
 }
 
 extension RecommandContentCollectionView: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return seriesDummyData.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeriesCollectionViewCell.identifier, for: indexPath) as? SeriesCollectionViewCell else {return UICollectionViewCell()}
         cell.dataBind(model: seriesDummyData[indexPath.row])
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderView.identifier, for: indexPath) as! CollectionHeaderView
+//
+//        headerview.setTitle(text: "김나은님이 좋아할 컨텐츠")
+//        return headerview
+//    }
 }

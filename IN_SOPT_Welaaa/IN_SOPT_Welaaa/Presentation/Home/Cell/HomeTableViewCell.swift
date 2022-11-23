@@ -22,15 +22,16 @@ final class HomeTableViewCell: UITableViewCell {
     
     lazy var recommandAudioBookCollectionView = RecommandAudioBookCollectionView()
     
+    lazy var monthAudioBookCollectionView = MonthAudioBookCollectionView()
+    
+    lazy var recentlyAudioBookCollectionView = RecentlyAudioBookColletionView()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupView()
         setConstraints()
-        
-        playlistCollectionView.collectionView.register(PlaylistCollectionViewCell.self,
-                                                                         forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
     }
     
     
@@ -41,7 +42,7 @@ final class HomeTableViewCell: UITableViewCell {
     
     
     private func setupView() {
-        [homeNavigationCell, homeAdCell, playlistCollectionView, recommandAudioBookCollectionView]
+        [homeNavigationCell, homeAdCell, playlistCollectionView, recommandAudioBookCollectionView, monthAudioBookCollectionView, recentlyAudioBookCollectionView]
             .forEach { addSubview($0) }
     }
     
@@ -64,7 +65,7 @@ final class HomeTableViewCell: UITableViewCell {
         playlistCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.homeAdCell.snp.bottom).offset(53)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(355)
+            $0.width.equalTo(1000)
             $0.height.equalTo(149)
         }
         
@@ -72,7 +73,22 @@ final class HomeTableViewCell: UITableViewCell {
             $0.top.equalTo(self.playlistCollectionView.snp.bottom).offset(52)
             $0.leading.equalTo(self.playlistCollectionView)
             $0.width.equalTo(355)
-            $0.bottom.equalTo(244)
+            $0.height.equalTo(241)
+        }
+        
+        monthAudioBookCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.recommandAudioBookCollectionView.snp.bottom).offset(56)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(375) //682
+             $0.height.equalTo(389)
+        }
+        
+        recentlyAudioBookCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.monthAudioBookCollectionView.snp.bottom).offset(56)
+            $0.leading.equalTo(self.playlistCollectionView)
+            $0.width.equalTo(355) //450
+             $0.height.equalTo(244)
+            
         }
     }
 }
@@ -111,7 +127,7 @@ extension RecommandAudioBookCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recommandAudioBookDummyData.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let recommandAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
             return UICollectionViewCell()}
@@ -120,51 +136,40 @@ extension RecommandAudioBookCollectionView: UICollectionViewDataSource {
     }
 }
 
+extension MonthAudioBookCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 163, height: 345)
+    }
+}
 
-//extension HomeTableViewCell: UICollectionViewDelegate {}
-//extension HomeTableViewCell: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        switch indexPath.section {
-//        case 0:
-//            return CGSize(width: 220, height: 105)
-//        case 1:
-//            return CGSize(width: 105, height: 200)
-//        default:
-//            return CGSize(width: 0, height: 0)
-//
-//        }
-//    }
-//}
-//
-//extension HomeTableViewCell: UICollectionViewDataSource {
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 2
-//    }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch section {
-//        case 0:
-//            return playlistDummyData.count
-//        case 1:
-//
-//        default:
-//            return 0
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        switch indexPath.section {
-//        case 0:
-//            guard let playlistCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
-//                return UICollectionViewCell()}
-//            playlistCell.dataBind(model: playlistDummyData[indexPath.row])
-//            return playlistCell
-//        case 1:
-//
-//        default:
-//            return UICollectionViewCell()
-//
-//        }
-//    }
-//}
+extension MonthAudioBookCollectionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return monthAudioBookDummyData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let monthAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthAudioBookCollectionViewCell.identifier, for: indexPath) as? MonthAudioBookCollectionViewCell else {
+            return UICollectionViewCell()}
+        monthAudioBookCell.dataBind(model: monthAudioBookDummyData[indexPath.row])
+        return monthAudioBookCell
+    }
+}
 
+extension RecentlyAudioBookColletionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 105, height: 200)
+    }
+}
+
+extension RecentlyAudioBookColletionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recommandAudioBookDummyData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let recentlyAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
+            return UICollectionViewCell()}
+        recentlyAudioBookCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        return recentlyAudioBookCell
+    }
+}

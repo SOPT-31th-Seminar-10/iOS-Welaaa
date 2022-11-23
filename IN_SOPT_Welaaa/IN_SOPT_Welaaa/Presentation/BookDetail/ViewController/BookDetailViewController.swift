@@ -30,7 +30,7 @@ extension BookDetailViewController {
 
 extension BookDetailView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 10000
+        return 2714
     }
 }
 
