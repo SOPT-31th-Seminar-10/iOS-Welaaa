@@ -11,6 +11,7 @@
 		D264328D292D3CEA0092606F /* MonthAudioBookCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264328C292D3CEA0092606F /* MonthAudioBookCollectionView.swift */; };
 		D264328F292D3DDB0092606F /* RecentlyAudioBookColletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264328E292D3DDB0092606F /* RecentlyAudioBookColletionView.swift */; };
 		D2643291292D9FB10092606F /* HomeFooterAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2643290292D9FB10092606F /* HomeFooterAdView.swift */; };
+		D27091D1292DE50F00DB1F13 /* CALayer + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27091D0292DE50F00DB1F13 /* CALayer + Extension.swift */; };
 		D2CE47C329292A27004D51F0 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47C229292A27004D51F0 /* BookDetailView.swift */; };
 		D2CE47C529292A86004D51F0 /* BookIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */; };
 		D2CE47C729292ABB004D51F0 /* BookInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CE47C629292ABB004D51F0 /* BookInformationView.swift */; };
@@ -105,6 +106,7 @@
 		D264328C292D3CEA0092606F /* MonthAudioBookCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAudioBookCollectionView.swift; sourceTree = "<group>"; };
 		D264328E292D3DDB0092606F /* RecentlyAudioBookColletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyAudioBookColletionView.swift; sourceTree = "<group>"; };
 		D2643290292D9FB10092606F /* HomeFooterAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterAdView.swift; sourceTree = "<group>"; };
+		D27091D0292DE50F00DB1F13 /* CALayer + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extension.swift"; sourceTree = "<group>"; };
 		D2CE47C229292A27004D51F0 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookIntroductionView.swift; sourceTree = "<group>"; };
 		D2CE47C629292ABB004D51F0 /* BookInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInformationView.swift; sourceTree = "<group>"; };
@@ -248,12 +250,12 @@
 			isa = PBXGroup;
 			children = (
 				D2CE47C229292A27004D51F0 /* BookDetailView.swift */,
+				D2CE47DA292B3CAD004D51F0 /* SeriesCollectionView.swift */,
 				D2CE47C429292A86004D51F0 /* BookIntroductionView.swift */,
 				D2CE47DC292B4C7A004D51F0 /* BookImageCollectionView.swift */,
 				D2CE47C629292ABB004D51F0 /* BookInformationView.swift */,
 				D2CE47CA29292B00004D51F0 /* DetailedInformationView.swift */,
 				D2CE47CC29292B5B004D51F0 /* RecommandContentCollectionView.swift */,
-				D2CE47DA292B3CAD004D51F0 /* SeriesCollectionView.swift */,
 				D2CE47E8292BC539004D51F0 /* CollectionHeaderView.swift */,
 			);
 			path = View;
@@ -426,6 +428,7 @@
 				ECA424FE291FCE5B004DFDAF /* UITabBar + Extension.swift */,
 				ECA42502291FD325004DFDAF /* UIView + Extension.swift */,
 				ECA4250C291FE488004DFDAF /* UITextField + Extension.swift */,
+				D27091D0292DE50F00DB1F13 /* CALayer + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				ECA424D3291F8E70004DFDAF /* TabBarController.swift in Sources */,
 				D2CE47D7292B2D6C004D51F0 /* BookImageCollectionViewCell.swift in Sources */,
 				D2CE47DF292B4E24004D51F0 /* BookImageModel.swift in Sources */,
+				D27091D1292DE50F00DB1F13 /* CALayer + Extension.swift in Sources */,
 				D2CE47D52929532E004D51F0 /* SeriesModel.swift in Sources */,
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
 				D2CE47C529292A86004D51F0 /* BookIntroductionView.swift in Sources */,

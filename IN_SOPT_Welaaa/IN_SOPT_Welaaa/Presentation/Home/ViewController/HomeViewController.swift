@@ -32,7 +32,7 @@ extension HomeViewController {
 
 extension HomeView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 2750
+        return 2181
     }
 }
 

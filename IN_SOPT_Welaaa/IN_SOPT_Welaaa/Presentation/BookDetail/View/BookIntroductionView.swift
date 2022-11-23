@@ -22,14 +22,15 @@ final class BookIntroductionView: BaseView {
     
     private var bookImage = UIImageView().then {
         $0.image = UIImage(named: "달러구트") // 서버에서 가져올거임
+        $0.layer.applySketchShadow(color: .black, alpha: 0.16, x: 2, y: 6, blur: 23, spread: 0)
     }
     
     private var keywordView = UIView()
     
     private var keywordButton = UIButton().then {
         $0.setTitle("오디오북", for: .normal)
+        $0.setTitleColor(Color.gray600, for: .normal)
         $0.titleLabel!.font = UIFont.font(.pretendardRegular, ofSize: 12)
-        $0.titleLabel!.textColor = Color.gray600
         $0.makeRounded(radius: 4)
         $0.backgroundColor = Color.gray300
     }
@@ -38,8 +39,9 @@ final class BookIntroductionView: BaseView {
         $0.text = "윌라 독점 · 이달의 오디오북 · 완독"
         $0.font = UIFont.font(.pretendardRegular, ofSize: 12)
         $0.textColor = Color.gray800
+        $0.textAlignment = .center
     }
-
+    
     
     private var infoIcon = UIImageView().then {
         $0.image = Image.info
@@ -101,7 +103,7 @@ final class BookIntroductionView: BaseView {
     private var audioBookPlayIcon = UIImageView().then {
         $0.image = Image.bookDetailPlay
     }
-
+    
     private var playLabel = UILabel().then {
         $0.text = "재생하기"
         $0.font = UIFont.font(.pretendardSemibold, ofSize: 14)
@@ -139,16 +141,16 @@ final class BookIntroductionView: BaseView {
     
     private var membershipButton = UIButton().then {
         $0.setTitle("멤버십 가입하고 무제한 감상하기", for: .normal)
+        $0.setTitleColor(Color.white, for: .normal)
         $0.titleLabel!.font = UIFont.font(.pretendardMedium, ofSize: 16)
-        $0.titleLabel!.textColor = Color.white
         $0.backgroundColor = Color.green
         $0.makeRounded(radius: 8)
     }
     
     private var priceButton = UIButton().then {
         $0.setTitle("개별 구매하기 15,000원", for: .normal)
+        $0.setTitleColor(Color.gray800, for: .normal)
         $0.titleLabel!.font = UIFont.font(.pretendardRegular, ofSize: 14)
-        $0.titleLabel!.textColor = Color.gray800
         $0.backgroundColor = Color.gray200
         $0.makeRounded(radius: 8)
     }
@@ -157,8 +159,39 @@ final class BookIntroductionView: BaseView {
         $0.backgroundColor = Color.gray200
     }
     
+    private var pagerTab = UIView()
+    
+    private var infoBookLabel = UILabel().then {
+        $0.text = "책 정보"
+        $0.textAlignment = .center
+        $0.font = UIFont.font(.pretendardSemibold, ofSize: 14)
+        $0.textColor = Color.green
+    }
+    
+    private var infoBookSeparateLine = UIView().then {
+        $0.backgroundColor = Color.green
+    }
+    
+    private var indexPartLabel = UILabel().then {
+        $0.text = "목차 13"
+        $0.textAlignment = .center
+        $0.font = UIFont.font(.pretendardSemibold, ofSize: 14)
+        $0.textColor = Color.gray800
+    }
+    
+    private var reviewPartLabel =  UILabel().then {
+        $0.text = "리뷰 444"
+        $0.textAlignment = .center
+        $0.font = UIFont.font(.pretendardSemibold, ofSize: 14)
+        $0.textColor = Color.gray800
+    }
+    
+    private var separatorBar = UIView().then {
+        $0.backgroundColor = Color.gray200
+    }
+    
     override func setupView() {
-        [backButton, shareButton, bookImage, keywordButton, keywordLabel, infoIcon, bookTitleLabel, bookIntroductionLabel, playIcon, playCnt, starIcon, starCnt, downloadIcon, downloadLabel, novelLabel,  playButton,  wantedButton, playTimeLabel, subBookIntroductionLabel,membershipButton,priceButton,separateView].forEach {
+        [backButton, shareButton, bookImage, keywordButton, keywordLabel, infoIcon, bookTitleLabel, bookIntroductionLabel, playIcon, playCnt, starIcon, starCnt, downloadIcon, downloadLabel, novelLabel,  playButton,  wantedButton, playTimeLabel, subBookIntroductionLabel,membershipButton,priceButton,separateView, pagerTab, separatorBar].forEach {
             addSubview($0)
         }
         
@@ -170,11 +203,15 @@ final class BookIntroductionView: BaseView {
             wantedButton.addSubview($0)
         }
         
+        [infoBookLabel, indexPartLabel, reviewPartLabel, infoBookSeparateLine].forEach {
+            pagerTab.addSubview($0)
+        }
+        
     }
     
     override func setupConstraints() {
         backButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(65)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(26)
             $0.size.equalTo(30)
         }
@@ -187,7 +224,7 @@ final class BookIntroductionView: BaseView {
         }
         
         bookImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(70)
+            $0.top.equalToSuperview().offset(5)
             $0.leading.equalToSuperview().offset(128)
             $0.width.equalTo(120)
             $0.height.equalTo(172)
@@ -329,6 +366,49 @@ final class BookIntroductionView: BaseView {
             $0.width.equalTo(375)
             $0.height.equalTo(12)
         }
+        
+        pagerTab.snp.makeConstraints{
+            $0.top.equalTo(self.separateView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(375)
+            $0.height.equalTo(42)
+        }
+        
+        infoBookLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(69)
+            $0.height.equalTo(40)
+        }
+        
+        infoBookSeparateLine.snp.makeConstraints {
+            $0.top.equalTo(self.pagerTab.snp.bottom).offset(1)
+            $0.leading.equalTo(self.infoBookLabel)
+            $0.width.equalTo(69)
+            $0.height.equalTo(2)
+        }
+        
+        indexPartLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(self.infoBookLabel.snp.trailing).offset(14)
+            $0.width.equalTo(70)
+            $0.height.equalTo(40)
+        }
+        
+        reviewPartLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(self.indexPartLabel.snp.trailing).offset(14)
+            $0.width.equalTo(65)
+            $0.height.equalTo(40)
+        }
+        
+        separatorBar.snp.makeConstraints {
+            $0.top.equalTo(self.pagerTab.snp.bottom).offset(1)
+            $0.leading.trailing.equalToSuperview()
+            $0.width.equalTo(375)
+            $0.height.equalTo(1)
+        }
     }
-    
 }
+
+
