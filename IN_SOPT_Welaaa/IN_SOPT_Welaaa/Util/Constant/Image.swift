@@ -34,6 +34,9 @@ public enum Image {
     static let homeAdsLarge = UIImage(named: "home_ad_large")!
     static let homeAdsSmall = UIImage(named: "home_ad_small")!
     static let homeAdsFooter = UIImage(named: "home_ad_footer")!
+    static let homePagerTabAudioBookPart = UIImage(named: "home_pagerTab_audioBookPart")
+    static let homePagerTabWebNovelPart = UIImage(named: "home_pagerTab_webNovelPart")
+    static let homePagerTabClassPart = UIImage(named: "home_pagerTab_classPart")
     // Home
     
     // Search

@@ -12,10 +12,20 @@ import Then
 
 final class HomeAdView: BaseView {
     
-    private var pagerTab = UIView().then {
-        $0.backgroundColor = .black
+    private var pagerTab = UIView()
+    
+    private var audioBookPartView = UIImageView().then {
+        $0.image = Image.homePagerTabAudioBookPart
     }
     
+    private var webNovelPartView = UIImageView().then {
+        $0.image = Image.homePagerTabWebNovelPart
+    }
+    
+    private var classPartView = UIImageView().then {
+        $0.image = Image.homePagerTabClassPart
+    }
+
     private var homeAdLargeImage = UIImageView().then {
         $0.image = Image.homeAdsLarge
     }
@@ -28,6 +38,10 @@ final class HomeAdView: BaseView {
         [pagerTab, homeAdLargeImage, homeAdSmallImage].forEach{
             addSubview($0)
         }
+        
+        [audioBookPartView, webNovelPartView, classPartView].forEach {
+            pagerTab.addSubview($0)
+        }
     }
     
     override func setupConstraints() {
@@ -36,6 +50,27 @@ final class HomeAdView: BaseView {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.width.equalToSuperview()
+            $0.height.equalTo(40)
+        }
+        
+        audioBookPartView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(66)
+            $0.height.equalTo(40)
+        }
+        
+        webNovelPartView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(self.audioBookPartView.snp.trailing).offset(1)
+            $0.width.equalTo(66)
+            $0.height.equalTo(40)
+        }
+        
+        classPartView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(self.webNovelPartView.snp.trailing).offset(1)
+            $0.width.equalTo(66)
             $0.height.equalTo(40)
         }
         

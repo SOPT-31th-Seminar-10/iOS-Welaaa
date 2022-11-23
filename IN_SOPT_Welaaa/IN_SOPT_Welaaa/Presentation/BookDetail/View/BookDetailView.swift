@@ -16,6 +16,8 @@ final class BookDetailView: BaseView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
+        $0.separatorStyle = .none
+        
         $0.delegate = self
         $0.dataSource = self
     }
