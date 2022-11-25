@@ -18,7 +18,7 @@ public enum Image {
     static let bookDetailLink = UIImage(named: "ic_bookdetail_link")!
     static let bookDetailPlay = UIImage(named: "ic_bookdetail_play")!
     static let bookDetailPlus = UIImage(named: "ic_bookdetail_plus")!
-    static let bookDetailStar = UIImage(named: "star")!
+    static let bookDetailStar = UIImage(named: "ic_bookdetail_star")!
     static let homeActive = UIImage(named: "ic_home_active")!
     static let homeInactive = UIImage(named: "ic_home_inactive")!
     static let info = UIImage(named: "ic_info")!
@@ -31,7 +31,13 @@ public enum Image {
     static let settingInactive = UIImage(named: "ic_setting_inactive")!
     static let logo = UIImage(named: "logo")!
     static let play = UIImage(named: "play")!.preparingThumbnail(of: CGSize(width: 150, height: 30))!
-    
+    static let homeAdsLarge = UIImage(named: "home_ad_large")!
+    static let homeAdsSmall = UIImage(named: "home_ad_small")!
+    static let homeAdsFooter = UIImage(named: "home_ad_footer")!
+    static let homePagerTabAudioBookPart = UIImage(named: "home_pagerTab_audioBookPart")
+    static let homePagerTabWebNovelPart = UIImage(named: "home_pagerTab_webNovelPart")
+    static let homePagerTabClassPart = UIImage(named: "home_pagerTab_classPart")
+    static let homePlaylistPlayButton = UIImage(named: "home_playlist_playButton")
     // Home
     
     // Search

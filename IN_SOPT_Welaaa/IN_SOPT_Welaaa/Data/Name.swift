@@ -41,4 +41,21 @@ extension Name {
             Name(name: "서반석")
         ]
     }
+    
+    static func keywordDummy() -> [Name] {
+        return [
+            Name(name: "파친코"),
+            Name(name: "사전연재"),
+            Name(name: "재일조선"),
+            Name(name: "대하소설"),
+            Name(name: "장편소설"),
+            Name(name: "재미교포"),
+            Name(name: "베스트셀러"),
+            Name(name: "애플TV"),
+//            Name(name: "조선"),
+//            Name(name: "선자"),
+//            Name(name: "고한수"),
+//            Name(name: "백이삭")
+        ]
+    }
 }
