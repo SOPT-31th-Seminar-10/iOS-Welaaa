@@ -11,6 +11,12 @@ final class HomeViewController: BaseViewController {
     
     private lazy var homeView = HomeView()
     
+    var bookListData = [BookData(id: 0, title: "", description: "", image: "", author: "")] {
+        didSet {
+            homeView.homeTableView.reloadData()
+        }
+    }
+    
     override func loadView() {
         self.view = homeView
     }
@@ -18,6 +24,8 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableView()
+        
+        getBookList()
     }
 }
 
@@ -98,6 +106,7 @@ extension HomeViewController: UITableViewDataSource {
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.identifier, for: indexPath) as? PlaylistTableViewCell else { return UITableViewCell()}
             cell.selectionStyle = .none
+            cell.dataBind(bookList: self.bookListData)
             cell.registerCollectionView()
             return cell
             
@@ -105,6 +114,7 @@ extension HomeViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
             cell.selectionStyle = .none
             cell.registerCollectionView()
+            cell.dataBind(bookList: self.bookListData)
             cell.delegate = self
             return cell
             
@@ -112,13 +122,15 @@ extension HomeViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MonthAudioBookTableViewCell.identifier, for: indexPath) as? MonthAudioBookTableViewCell else { return UITableViewCell()}
             cell.selectionStyle = .none
             cell.registerCollectionView()
+            cell.dataBind(bookList: self.bookListData)
             cell.delegate = self
             return cell
-            //
+            
         case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
             cell.selectionStyle = .none
             cell.registerCollectionView()
+            cell.dataBind(bookList: self.bookListData)
             cell.delegate = self
             return cell
             
@@ -163,7 +175,6 @@ extension HomeViewController: RecommandAudioVBookCollectionViewCellDelegate {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
-        //print(555, index)
     }
 }
 
@@ -185,4 +196,26 @@ extension HomeViewController: RecentlyAudioBookCollectionViewCellDelegate {
     }
 }
 
-
+extension HomeViewController {
+    
+    func getBookList() {
+        BookAPI.shared.getBookList(completion: { (response) in
+            
+            switch response {
+            case .success(let data):
+                if let data = data as? [BookData] {
+                    self.bookListData = data
+                }
+            case .requestErr(let message):
+                print("requestErr", message)
+            case .pathErr:
+                print(".pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+        })
+    }
+}

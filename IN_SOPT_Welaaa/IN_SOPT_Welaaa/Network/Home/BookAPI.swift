@@ -1,23 +1,23 @@
 //
-//  CategoryAPI.swift
+//  BookAPI.swift
 //  IN_SOPT_Welaaa
 //
-//  Created by 김승찬 on 2022/11/23.
+//  Created by 류희재 on 2022/11/25.
 //
 
 import Foundation
 
 import Moya
 
-public class CategoryAPI {
+public class BookAPI {
     
-    static let shared = CategoryAPI()
+    static let shared = BookAPI()
     
     public init() { }
     
     var bookProvider = MoyaProvider<BookService>()
     
-    func getCategory(completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getBookList(completion: @escaping (NetworkResult<Any>) -> Void) {
         bookProvider.request(.getBook) { result in
             switch result {
             case.success(let response):
@@ -25,7 +25,7 @@ public class CategoryAPI {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeCategoryStatus(by: statusCode, data)
+                let networkResult = self.judgeBookStatus(by: statusCode, data)
                 completion(networkResult)
     
             case .failure(let err):
@@ -34,10 +34,10 @@ public class CategoryAPI {
         }
     }
     
-    private func judgeCategoryStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    private func judgeBookStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         
-        guard let decodedData = try? decoder.decode(GenericResponse<[CategoryData]>.self, from: data) else {
+        guard let decodedData = try? decoder.decode(GenericResponse<[BookData]>.self, from: data) else {
             return .pathErr
         }
         
@@ -53,3 +53,5 @@ public class CategoryAPI {
         }
     }
 }
+
+

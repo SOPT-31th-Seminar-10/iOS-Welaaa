@@ -18,6 +18,12 @@ final class RecentlyAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "RecentlyAudioBookTableViewCell"
     
+    var bookListData = [BookData(id: 0, title: "", description: "", image: "", author: "")] {
+        didSet {
+            recentlyAudioBookCollectionView.reloadData()
+        }
+    }
+    
     var delegate: RecentlyAudioBookCollectionViewCellDelegate?
     
     lazy var recentlyAudioBookCollectionView =
@@ -71,13 +77,13 @@ extension RecentlyAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
 
 extension RecentlyAudioBookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommandAudioBookDummyData.count
+        return bookListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let recentlyAudioBookViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
             return UICollectionViewCell()}
-        recentlyAudioBookViewCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        recentlyAudioBookViewCell.update(book: bookListData, indexPath: indexPath)
         return recentlyAudioBookViewCell
     }
 }

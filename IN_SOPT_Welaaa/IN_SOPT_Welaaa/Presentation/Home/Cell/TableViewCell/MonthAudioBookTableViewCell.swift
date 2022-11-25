@@ -18,6 +18,12 @@ final class MonthAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "MonthAudioBookTableViewCell"
     
+    var bookListData = [BookData(id: 0, title: "", description: "", image: "", author: "")] {
+        didSet {
+            monthAudioBookCollectionView.reloadData()
+        }
+    }
+    
     var delegate: MonthAudioBookCollectionViewCellDelegate?
     
     lazy var monthAudioBookCollectionView =
@@ -61,6 +67,11 @@ final class MonthAudioBookTableViewCell: UITableViewCell {
         }
     }
     
+    func dataBind(bookList: [BookData]) {
+        self.bookListData = bookList
+    }
+
+    
 }
 
 extension MonthAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
@@ -71,13 +82,13 @@ extension MonthAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
 
 extension MonthAudioBookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monthAudioBookDummyData.count
+        return bookListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let monthAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthAudioBookCollectionViewCell.identifier, for: indexPath) as? MonthAudioBookCollectionViewCell else {
             return UICollectionViewCell()}
-        monthAudioBookCell.dataBind(model: monthAudioBookDummyData[indexPath.row])
+        monthAudioBookCell.update(book: bookListData, indexPath: indexPath)
         return monthAudioBookCell
     }
 }
