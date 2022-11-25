@@ -18,6 +18,12 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "RecommandAudioBookTableViewCell"
     
+    var bookListData = [BookData(id: 0, title: "", description: "", image: "", author: "")] {
+        didSet {
+            recommandAudioBookCollectionView.reloadData()
+        }
+    }
+    
     var delegate: RecommandAudioVBookCollectionViewCellDelegate?
     
     lazy var recommandAudioBookCollectionView =
@@ -64,6 +70,11 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
         }
     }
     
+    func dataBind(bookList: [BookData]) {
+        self.bookListData = bookList
+    }
+
+    
 }
 
 extension RecommandAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
@@ -74,13 +85,13 @@ extension RecommandAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
 
 extension RecommandAudioBookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommandAudioBookDummyData.count
+        return bookListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let recommandAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
             return UICollectionViewCell()}
-        recommandAudioBookCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        recommandAudioBookCell.update(book: bookListData, indexPath: indexPath)
         return recommandAudioBookCell
     }
 }

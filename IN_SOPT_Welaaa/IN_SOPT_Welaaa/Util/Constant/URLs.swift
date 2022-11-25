@@ -11,4 +11,5 @@ public enum URLs {
     
     public static let baseURL = "http://3.36.161.194:3000"
     public static let category = "/category"
+    public static let book = "/book"
 }

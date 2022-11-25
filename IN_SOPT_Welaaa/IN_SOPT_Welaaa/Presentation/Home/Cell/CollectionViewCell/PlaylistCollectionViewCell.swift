@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import Kingfisher
 
 final class PlaylistCollectionViewCell: UICollectionViewCell {
     
@@ -111,10 +112,14 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func dataBind(model: PlaylistModel) {
-        bookImage.image = UIImage(named: model.bookImage ?? "")
-        titleLabel.text = model.title
-        authorLabel.text = model.author
-        progressLabel.text = model.progress
+    func update(book: [BookData], indexPath: IndexPath) {
+     
+        self.titleLabel.text = book[indexPath.row].title
+        self.authorLabel.text = book[indexPath.row].author
+        
+        guard let url = URL(string: book[indexPath.row].image) else { return }
+        let resource = ImageResource(downloadURL: url)
+
+        self.bookImage.kf.setImage(with: resource)
     }
 }

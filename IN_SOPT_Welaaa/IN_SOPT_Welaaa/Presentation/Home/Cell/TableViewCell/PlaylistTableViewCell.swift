@@ -14,6 +14,12 @@ final class PlaylistTableViewCell: UITableViewCell {
     
     static let identifier = "PlaylistTableViewCell"
     
+    var bookListData = [BookData(id: 0, title: "", description: "", image: "", author: "")] {
+        didSet {
+            playlistCollectionView.reloadData()
+        }
+    }
+    
     lazy var playlistCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
@@ -58,6 +64,10 @@ final class PlaylistTableViewCell: UITableViewCell {
             $0.height.equalTo(149)
         }
     }
+    
+    func dataBind(bookList: [BookData]) {
+        self.bookListData = bookList
+    }
 }
 
 extension PlaylistTableViewCell: UICollectionViewDelegateFlowLayout {
@@ -68,13 +78,14 @@ extension PlaylistTableViewCell: UICollectionViewDelegateFlowLayout {
 
 extension PlaylistTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return playlistDummyData.count
+        return bookListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let playlistCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
             return UICollectionViewCell()}
-        playlistCell.dataBind(model: playlistDummyData[indexPath.row])
-        return playlistCell
+     
+        cell.update(book: bookListData, indexPath: indexPath)
+        return cell
     }
 }
