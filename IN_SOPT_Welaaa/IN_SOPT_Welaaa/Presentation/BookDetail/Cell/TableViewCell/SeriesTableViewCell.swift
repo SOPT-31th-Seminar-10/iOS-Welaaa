@@ -24,14 +24,42 @@ final class SeriesTableViewCell: UITableViewCell {
         $0.collectionViewLayout = layout
         $0.delegate = self
         $0.dataSource = self
+        
     }
-    private func setupView() {}
-    private func setConstraints() {}
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super .init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupView()
+        setConstraints()
+        registerCollectionView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        contentView.addSubview(seriesCollectionView)
+    }
+    
+    private func setConstraints() {
+        seriesCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(355)
+            $0.height.equalTo(265)
+        }
+    }
+    
+    private func registerCollectionView() {
+        seriesCollectionView.register(SeriesCollectionViewCell.self, forCellWithReuseIdentifier: SeriesCollectionViewCell.identifier)
+    }
 }
 
 extension SeriesTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 200)
+        return CGSize(width: 105, height: 178)
     }
 }
 

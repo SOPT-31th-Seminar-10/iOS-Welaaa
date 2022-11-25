@@ -1,5 +1,5 @@
 //
-//  PlaylistTableViewCell.swift
+//  RecentlyAudioBookTableViewCell.swift
 //  IN_SOPT_Welaaa
 //
 //  Created by 류희재 on 2022/11/24.
@@ -10,17 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
-final class PlaylistTableViewCell: UITableViewCell {
+final class RecentlyAudioBookTableViewCell: UITableViewCell {
     
-    static let identifier = "PlaylistTableViewCell"
+    static let identifier = "RecentlyAudioBookTableViewCell"
     
     
-    lazy var playlistCollectionView =
+    lazy var recentlyAudioBookCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
         $0.delegate = self
@@ -40,45 +40,41 @@ final class PlaylistTableViewCell: UITableViewCell {
     }
     
     private func registerCollectionView() {
-        playlistCollectionView.register(PlaylistCollectionViewCell.self, forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
+        recentlyAudioBookCollectionView.register(RecommandAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
     }
     
     private func setupView() {
-        contentView.addSubview(playlistCollectionView)
-//        contentView.backgroundColor = .blue
+        contentView.addSubview(recentlyAudioBookCollectionView)
     }
     
     private func setConstraints() {
-        playlistCollectionView.snp.makeConstraints {
+        recentlyAudioBookCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(450)
-            $0.height.equalTo(149)
+            $0.width.equalTo(375)
+            $0.height.equalTo(244)
         }
     }
     
 }
 
-extension PlaylistTableViewCell: UICollectionViewDelegateFlowLayout {
+extension RecentlyAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 220, height: 105)
+        return CGSize(width: 105, height: 200)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
 }
 
-extension PlaylistTableViewCell: UICollectionViewDataSource {
+extension RecentlyAudioBookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return playlistDummyData.count
+        return recommandAudioBookDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let playlistCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
+        guard let recentlyAudioBookViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
             return UICollectionViewCell()}
-        playlistCell.dataBind(model: playlistDummyData[indexPath.row])
-        return playlistCell
+        recentlyAudioBookViewCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
+        return recentlyAudioBookViewCell
     }
 }
+
 

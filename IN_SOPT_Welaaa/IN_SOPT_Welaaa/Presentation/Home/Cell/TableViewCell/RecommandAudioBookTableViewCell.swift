@@ -21,7 +21,6 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         
         $0.backgroundColor = .white
-        $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
         $0.delegate = self
         $0.dataSource = self
@@ -49,9 +48,9 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
     
     private func setConstraints() {
         recommandAudioBookCollectionView .snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(-20)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(450)
+            $0.width.equalTo(355)
             $0.height.equalTo(244)
         }
     }

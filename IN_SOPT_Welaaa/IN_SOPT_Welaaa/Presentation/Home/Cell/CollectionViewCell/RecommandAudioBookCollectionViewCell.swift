@@ -59,11 +59,15 @@ final class RecommandAudioBookCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints{
             $0.top.equalTo(self.bookImage.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
+            $0.width.equalTo(105)
+            $0.height.equalTo(14)
         }
         
         authorLabel.snp.makeConstraints{
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
+            $0.width.equalTo(105)
+            $0.height.equalTo(14)
         }
     }
     

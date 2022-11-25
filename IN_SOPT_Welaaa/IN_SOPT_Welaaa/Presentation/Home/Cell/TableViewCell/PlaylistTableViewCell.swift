@@ -1,5 +1,5 @@
 //
-//  MonthAudioBookTableViewCell.swift
+//  PlaylistTableViewCell.swift
 //  IN_SOPT_Welaaa
 //
 //  Created by 류희재 on 2022/11/24.
@@ -10,17 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
-final class MonthAudioBookTableViewCell: UITableViewCell {
+final class PlaylistTableViewCell: UITableViewCell {
     
-    static let identifier = "MonthAudioBookTableViewCell"
+    static let identifier = "PlaylistTableViewCell"
     
     
-    lazy var monthAudioBookCollectionView =
+    lazy var playlistCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
         $0.delegate = self
@@ -40,40 +39,45 @@ final class MonthAudioBookTableViewCell: UITableViewCell {
     }
     
     private func registerCollectionView() {
-        monthAudioBookCollectionView.register(MonthAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: MonthAudioBookCollectionViewCell.identifier)
+        playlistCollectionView.register(PlaylistCollectionViewCell.self, forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
     }
     
     private func setupView() {
-        contentView.addSubview(monthAudioBookCollectionView)
+        contentView.addSubview(playlistCollectionView)
+//        contentView.backgroundColor = .blue
     }
     
     private func setConstraints() {
-        monthAudioBookCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.width.equalTo(682)
-            $0.height.equalTo(389)
+        playlistCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-10)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(450)
+            $0.height.equalTo(149)
         }
     }
     
 }
 
-extension MonthAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
+extension PlaylistTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 163, height: 345)
+        return CGSize(width: 220, height: 105)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
 }
 
-extension MonthAudioBookTableViewCell: UICollectionViewDataSource {
+extension PlaylistTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monthAudioBookDummyData.count
+        return playlistDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let monthAudioBookCell = collectionView.dequeueReusableCell(withReuseIdentifier: MonthAudioBookCollectionViewCell.identifier, for: indexPath) as? MonthAudioBookCollectionViewCell else {
+        guard let playlistCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.identifier, for: indexPath) as? PlaylistCollectionViewCell else {
             return UICollectionViewCell()}
-        monthAudioBookCell.dataBind(model: monthAudioBookDummyData[indexPath.row])
-        return monthAudioBookCell
+        playlistCell.dataBind(model: playlistDummyData[indexPath.row])
+        return playlistCell
     }
 }
 

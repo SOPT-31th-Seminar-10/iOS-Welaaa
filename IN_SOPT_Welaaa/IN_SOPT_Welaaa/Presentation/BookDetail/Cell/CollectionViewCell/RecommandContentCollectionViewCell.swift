@@ -1,18 +1,19 @@
 //
-//  SeriesColletionViewCell.swift
+//  RecommandContentTableViewCell.swift
 //  IN_SOPT_Welaaa
 //
-//  Created by 류희재 on 2022/11/21.
+//  Created by 류희재 on 2022/11/25.
 //
+
 
 import UIKit
 
 import SnapKit
 import Then
 
-class SeriesCollectionViewCell: UICollectionViewCell {
+class RecommandContentCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "SeriesCollectionViewCell"
+    static let identifier = "RecommandContentCollectionViewCell"
     
     private lazy var bookImage = UIImageView().then {
         $0.makeRounded(radius: 8)
@@ -22,12 +23,6 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         $0.textColor = Color.gray800
         $0.textAlignment = .left
         $0.font = UIFont.font(.pretendardSemibold, ofSize: 14)
-    }
-    
-    private lazy var authorLabel = UILabel().then {
-        $0.textColor = Color.gray600
-        $0.textAlignment = .left
-        $0.font = UIFont.font(.pretendardRegular, ofSize: 14)
     }
     
     override init(frame: CGRect) {
@@ -43,14 +38,14 @@ class SeriesCollectionViewCell: UICollectionViewCell {
     
     
     private func setupView() {
-        [bookImage, titleLabel, authorLabel].forEach{
+        [bookImage, titleLabel].forEach{
             contentView.addSubview($0)
         }
     }
     
     private func setConstraints() {
         bookImage.snp.makeConstraints{
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview()
             $0.width.equalTo(105)
             $0.height.equalTo(154)
@@ -59,19 +54,15 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints{
             $0.top.equalTo(self.bookImage.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
-        }
-        
-        authorLabel.snp.makeConstraints{
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview()
+            $0.height.equalTo(14)
         }
     }
     
     func dataBind(model: SeriesModel){
         bookImage.image = UIImage(named: model.bookImage)
         titleLabel.text = model.title
-        authorLabel.text = model.author
     }
 }
+
 
 

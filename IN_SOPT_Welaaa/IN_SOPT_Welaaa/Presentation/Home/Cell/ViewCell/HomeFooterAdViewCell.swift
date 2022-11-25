@@ -36,7 +36,7 @@ final class HomeFooterAdViewCell: UITableViewCell {
     private func setupConstraints() {
         homeFooterAdImage.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(335)
             $0.height.equalTo(204)
         }

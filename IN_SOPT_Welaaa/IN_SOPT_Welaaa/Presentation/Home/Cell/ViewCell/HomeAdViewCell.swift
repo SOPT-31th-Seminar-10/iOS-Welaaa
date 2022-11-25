@@ -14,6 +14,8 @@ final class HomeAdViewCell: UITableViewCell {
     
     static let identifier = "HomeAdView"
     
+    private var homeAdView = UIView()
+    
     private var pagerTab = UIView()
     
     private var audioBookPartView = UIImageView().then {
@@ -47,8 +49,11 @@ final class HomeAdViewCell: UITableViewCell {
     }
 
     private func setupView() {
+        
+        addSubview(homeAdView)
+        
         [pagerTab, homeAdLargeImage, homeAdSmallImage].forEach{
-            addSubview($0)
+            homeAdView.addSubview($0)
         }
         
         [audioBookPartView, webNovelPartView, classPartView].forEach {
@@ -58,6 +63,11 @@ final class HomeAdViewCell: UITableViewCell {
     
     private func setupConstraints() {
         
+        homeAdView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-60)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(367)
+        }
         pagerTab.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

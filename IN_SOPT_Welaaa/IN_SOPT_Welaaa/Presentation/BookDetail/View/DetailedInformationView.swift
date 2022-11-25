@@ -10,13 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class DetailedInformationView: BaseView {
+final class DetailedInformationView: UITableViewCell {
     
-    private var detailedInformationLabel = UILabel().then {
-        $0.text = "상세 정보"
-        $0.font = UIFont.font(.pretendardSemibold, ofSize: 20)
-        $0.textColor = Color.gray900
-    }
+    static let identifier = "DetailedInformationView"
+    
+    private var detailedInformationView = UIView()
+    
     private var detailedInformationTitleLabel = UILabel().then {
         $0.text = """
         저자
@@ -56,20 +55,33 @@ final class DetailedInformationView: BaseView {
         $0.attributedText = attrString
     }
     
-    override func setupView() {
-        [detailedInformationLabel, detailedInformationTitleLabel, detailedInformationContentLabel].forEach {
-            addSubview($0)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        addSubview(detailedInformationView)
+        
+        [detailedInformationTitleLabel, detailedInformationContentLabel].forEach {
+            detailedInformationView.addSubview($0)
         }
     }
-    override func setupConstraints() {
-        detailedInformationLabel.snp.makeConstraints{
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-        }
+    private func setupConstraints() {
         
+        detailedInformationView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(181)
+        }
         detailedInformationTitleLabel.snp.makeConstraints{
-            $0.top.equalTo(self.detailedInformationLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview()
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(90)
             $0.height.equalTo(106)
         }

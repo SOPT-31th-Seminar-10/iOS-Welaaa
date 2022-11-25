@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class BookInformationView: BaseView {
+final class BookInformationView: UITableViewCell {
+    
+    static let identifier = "BookInformationView"
+    
+    private var bookInformationView = UIView()
     
     private var infoAudioBookTitleLabel = UILabel().then {
         $0.text = "오디오북 소개"
@@ -91,9 +95,22 @@ final class BookInformationView: BaseView {
         $0.textColor = Color.gray800
     }
     
-    override func setupView() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        
+        addSubview(bookInformationView)
+        
         [infoAudioBookTitleLabel, infoAudioBookLabel, buyPaperBookButton, infoAuthorTitleLabel, authorLabel, infoAuthorLabel].forEach {
-            addSubview($0)
+            bookInformationView.addSubview($0)
         }
         
         [linkIcon,buyPaperBookLabel].forEach {
@@ -101,28 +118,34 @@ final class BookInformationView: BaseView {
         }
     }
     
-    override func setupConstraints() {
+    private func setupConstraints() {
+        
+        bookInformationView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-35)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(674)
+        }
         infoAudioBookTitleLabel.snp.makeConstraints{
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
         }
         
         infoAudioBookLabel.snp.makeConstraints{
             $0.top.equalTo(self.infoAudioBookTitleLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(355)
             $0.height.equalTo(206)
         }
         buyPaperBookButton.snp.makeConstraints{
             $0.top.equalTo(self.infoAudioBookLabel.snp.bottom).offset(30)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(335)
             $0.height.equalTo(36)
         }
         
         linkIcon.snp.makeConstraints{
             $0.top.equalToSuperview().offset(9)
-            $0.leading.equalToSuperview().offset(111)
+            $0.leading.equalToSuperview().offset(131)
             $0.width.equalTo(16.04)
             $0.height.equalTo(16)
         }
@@ -134,16 +157,16 @@ final class BookInformationView: BaseView {
         
         infoAuthorTitleLabel.snp.makeConstraints{
             $0.top.equalTo(self.buyPaperBookButton.snp.bottom).offset(40)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
         }
         
         authorLabel.snp.makeConstraints{
             $0.top.equalTo(self.infoAuthorTitleLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
         }
         infoAuthorLabel.snp.makeConstraints{
             $0.top.equalTo(self.authorLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(355)
             $0.height.equalTo(206)
         }

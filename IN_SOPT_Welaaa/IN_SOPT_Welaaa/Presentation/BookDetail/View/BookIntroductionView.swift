@@ -12,6 +12,8 @@ import Then
 
 final class BookIntroductionView: BaseView {
     
+    static let identifier = "bookIntroductionView"
+    
     private var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
@@ -191,6 +193,7 @@ final class BookIntroductionView: BaseView {
     }
     
     override func setupView() {
+        
         [backButton, shareButton, bookImage, keywordButton, keywordLabel, infoIcon, bookTitleLabel, bookIntroductionLabel, playIcon, playCnt, starIcon, starCnt, downloadIcon, downloadLabel, novelLabel,  playButton,  wantedButton, playTimeLabel, subBookIntroductionLabel,membershipButton,priceButton,separateView, pagerTab, separatorBar].forEach {
             addSubview($0)
         }

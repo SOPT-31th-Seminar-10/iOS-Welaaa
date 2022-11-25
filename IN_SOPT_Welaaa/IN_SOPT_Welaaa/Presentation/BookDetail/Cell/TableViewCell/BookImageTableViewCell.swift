@@ -1,5 +1,5 @@
 //
-//  RecentlyAudioBookTableViewCell.swift
+//  BookImageTableViewCell.swift
 //  IN_SOPT_Welaaa
 //
 //  Created by 류희재 on 2022/11/24.
@@ -10,16 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
-final class RecentlyAudioBookTableViewCell: UITableViewCell {
+final class BookImageTableViewCell: UITableViewCell {
     
-    static let identifier = "RecentlyAudioBookTableViewCell"
+    static let identifier = "BookImageTableViewCell"
     
-    
-    lazy var recentlyAudioBookCollectionView =
-    UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    lazy var bookImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = true
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
@@ -39,42 +39,39 @@ final class RecentlyAudioBookTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCollectionView() {
-        recentlyAudioBookCollectionView.register(RecommandAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
-    }
-    
     private func setupView() {
-        contentView.addSubview(recentlyAudioBookCollectionView)
+        contentView.addSubview(bookImageCollectionView)
     }
     
     private func setConstraints() {
-        recentlyAudioBookCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
+        bookImageCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-35)
             $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(450)
-            $0.height.equalTo(244)
+            $0.width.equalTo(355)
+            $0.height.equalTo(258)
         }
     }
     
-}
-
-extension RecentlyAudioBookTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 200)
+    private func registerCollectionView() {
+        bookImageCollectionView.register(BookImageCollectionViewCell.self, forCellWithReuseIdentifier: BookImageCollectionViewCell.identifier)
     }
 }
 
-extension RecentlyAudioBookTableViewCell: UICollectionViewDataSource {
+extension BookImageTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 335, height: 258)
+    }
+}
+
+extension BookImageTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommandAudioBookDummyData.count
+        return bookImageDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let recentlyAudioBookViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier, for: indexPath) as? RecommandAudioBookCollectionViewCell else {
+        guard let bookImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: BookImageCollectionViewCell.identifier, for: indexPath) as? BookImageCollectionViewCell else {
             return UICollectionViewCell()}
-        recentlyAudioBookViewCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
-        return recentlyAudioBookViewCell
+        bookImageCell.dataBind(model: bookImageDummyData[indexPath.row])
+        return bookImageCell
     }
 }
-
-

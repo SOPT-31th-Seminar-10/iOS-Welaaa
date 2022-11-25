@@ -32,14 +32,13 @@ final class HomeSectionView: UICollectionReusableView {
     }
     
     private func setupView() {
-      
         addSubview(titleLabel)
     }
 
     private func setupConstraints() {
 
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
             $0.height.equalTo(40)
         }
     }

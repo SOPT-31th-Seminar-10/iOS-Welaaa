@@ -27,7 +27,7 @@ final class HomeView: BaseView {
     
     override func setupConstraints() {
         homeTableView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalToSuperview()
