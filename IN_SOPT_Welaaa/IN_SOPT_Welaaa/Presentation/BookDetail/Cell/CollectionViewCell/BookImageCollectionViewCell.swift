@@ -4,12 +4,6 @@
 //
 //  Created by 류희재 on 2022/11/21.
 //
-
-import UIKit
-
-import SnapKit
-import Then
-
 import UIKit
 
 import SnapKit

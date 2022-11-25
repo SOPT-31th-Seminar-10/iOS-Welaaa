@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
+
 final class HomeView: BaseView {
     
     lazy var homeTableView = UITableView(frame: .zero, style: .grouped).then{
@@ -17,8 +18,7 @@ final class HomeView: BaseView {
         $0.showsVerticalScrollIndicator = false
         $0.separatorStyle = .none
         
-        $0.delegate = self
-        $0.dataSource = self
+        
     }
     
     override func setupView() {

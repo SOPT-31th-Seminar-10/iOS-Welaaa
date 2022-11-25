@@ -14,7 +14,7 @@ final class BookIntroductionView: BaseView {
     
     static let identifier = "bookIntroductionView"
     
-    private var backButton = UIButton().then {
+    var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
     
@@ -191,6 +191,8 @@ final class BookIntroductionView: BaseView {
     private var separatorBar = UIView().then {
         $0.backgroundColor = Color.gray200
     }
+    
+    
     
     override func setupView() {
         

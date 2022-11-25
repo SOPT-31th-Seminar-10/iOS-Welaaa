@@ -10,10 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
+protocol RecommandAudioVBookCollectionViewCellDelegate {
+    func selectedRecommandAudioVBookCollectionViewCell(_ tableView: UITableView, _ index: Int)
+}
+
 final class RecommandAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "RecommandAudioBookTableViewCell"
     
+    var delegate: RecommandAudioVBookCollectionViewCellDelegate?
     
     lazy var recommandAudioBookCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -22,8 +27,10 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
         
         $0.backgroundColor = .white
         $0.collectionViewLayout = layout
-        $0.delegate = self
-        $0.dataSource = self
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -38,7 +45,9 @@ final class RecommandAudioBookTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCollectionView() {
+    func registerCollectionView() {
+        recommandAudioBookCollectionView.delegate = self
+        recommandAudioBookCollectionView.dataSource = self
         recommandAudioBookCollectionView.register(RecommandAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
     }
     
@@ -76,4 +85,11 @@ extension RecommandAudioBookTableViewCell: UICollectionViewDataSource {
     }
 }
 
+extension RecommandAudioBookTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            delegate.selectedRecommandAudioVBookCollectionViewCell(UITableView(), indexPath.item)
+        }
+    }
+}
 

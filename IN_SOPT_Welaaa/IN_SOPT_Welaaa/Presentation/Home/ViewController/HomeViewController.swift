@@ -24,6 +24,9 @@ final class HomeViewController: BaseViewController {
 extension HomeViewController {
     private func registerTableView() {
         
+        homeView.homeTableView.delegate = self
+        homeView.homeTableView.dataSource = self
+        
         homeView.homeTableView.register(HomeNavigationViewCell.self, forCellReuseIdentifier: HomeNavigationViewCell.identifier)
         
         homeView.homeTableView.register(HomeAdViewCell.self, forCellReuseIdentifier: HomeAdViewCell.identifier)
@@ -38,11 +41,11 @@ extension HomeViewController {
         
         homeView.homeTableView.register(HomeFooterAdViewCell.self, forCellReuseIdentifier: HomeFooterAdViewCell.identifier)
         
-//        homeView.homeTableView.register(HomeSectionView.self, forHeaderFooterViewReuseIdentifier: HomeSectionView.identifier)
+        //        homeView.homeTableView.register(HomeSectionView.self, forHeaderFooterViewReuseIdentifier: HomeSectionView.identifier)
     }
 }
 
-extension HomeView: UITableViewDelegate {
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -70,7 +73,7 @@ extension HomeView: UITableViewDelegate {
 }
 
 
-extension HomeView: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 7
@@ -83,39 +86,45 @@ extension HomeView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            guard let navigationCell =  tableView.dequeueReusableCell(withIdentifier: HomeNavigationViewCell.identifier, for: indexPath) as? HomeNavigationViewCell else { return UITableViewCell()}
-            navigationCell.selectionStyle = .none
-            
-            return navigationCell
+            guard let cell =  tableView.dequeueReusableCell(withIdentifier: HomeNavigationViewCell.identifier, for: indexPath) as? HomeNavigationViewCell else { return UITableViewCell()}
+            cell.selectionStyle = .none
+            return cell
             
         case 1:
-            guard let adCell = tableView.dequeueReusableCell(withIdentifier: HomeAdViewCell.identifier, for: indexPath) as? HomeAdViewCell else { return UITableViewCell() }
-            adCell.selectionStyle = .none
-            return adCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeAdViewCell.identifier, for: indexPath) as? HomeAdViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            return cell
             
         case 2:
-            guard let playlistCell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.identifier, for: indexPath) as? PlaylistTableViewCell else { return UITableViewCell()}
-            playlistCell.selectionStyle = .none
-            return playlistCell
-            //
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.identifier, for: indexPath) as? PlaylistTableViewCell else { return UITableViewCell()}
+            cell.selectionStyle = .none
+            cell.registerCollectionView()
+            return cell
+            
         case 3:
-            guard let recommandAudioBookCell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
-            recommandAudioBookCell.selectionStyle = .none
-            return recommandAudioBookCell
-            //
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
+            cell.selectionStyle = .none
+            cell.registerCollectionView()
+            cell.delegate = self
+            return cell
+            
         case 4:
-            guard let monthAudioBookCell = tableView.dequeueReusableCell(withIdentifier: MonthAudioBookTableViewCell.identifier, for: indexPath) as? MonthAudioBookTableViewCell else { return UITableViewCell()}
-            monthAudioBookCell.selectionStyle = .none
-            return monthAudioBookCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MonthAudioBookTableViewCell.identifier, for: indexPath) as? MonthAudioBookTableViewCell else { return UITableViewCell()}
+            cell.selectionStyle = .none
+            cell.registerCollectionView()
+            cell.delegate = self
+            return cell
             //
         case 5:
-            guard let recentlyAudioBookCell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
-            recentlyAudioBookCell.selectionStyle = .none
-            return recentlyAudioBookCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommandAudioBookTableViewCell.identifier, for: indexPath) as? RecommandAudioBookTableViewCell else { return UITableViewCell()}
+            cell.selectionStyle = .none
+            cell.registerCollectionView()
+            cell.delegate = self
+            return cell
             
         case 6:
-            guard let footerAdCell = tableView.dequeueReusableCell(withIdentifier: HomeFooterAdViewCell.identifier, for: indexPath) as? HomeFooterAdViewCell else { return UITableViewCell() }
-            return footerAdCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeFooterAdViewCell.identifier, for: indexPath) as? HomeFooterAdViewCell else { return UITableViewCell() }
+            return cell
             
         default:
             return UITableViewCell()
@@ -145,6 +154,34 @@ extension HomeView: UITableViewDataSource {
             return UIView()
             
         }
+    }
+}
+
+extension HomeViewController: RecommandAudioVBookCollectionViewCellDelegate {
+    func selectedRecommandAudioVBookCollectionViewCell(_ tableView: UITableView, _ index: Int) {
+        let vc = BookDetailViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+        //print(555, index)
+    }
+}
+
+extension HomeViewController: MonthAudioBookCollectionViewCellDelegate {
+    func selectedMonthAudioBookCollectionViewCell(_ tableView: UITableView, _ index: Int) {
+        let vc = BookDetailViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController: RecentlyAudioBookCollectionViewCellDelegate {
+    func selectedRecentlyAudioBookCollectionViewCell(_ tableView: UITableView, _ index: Int) {
+        let vc = BookDetailViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
 }
 

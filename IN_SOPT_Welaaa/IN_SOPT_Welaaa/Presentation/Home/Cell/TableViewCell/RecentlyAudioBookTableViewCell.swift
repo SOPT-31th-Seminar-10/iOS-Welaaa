@@ -10,10 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
+protocol RecentlyAudioBookCollectionViewCellDelegate {
+    func selectedRecentlyAudioBookCollectionViewCell(_ tableView: UITableView, _ index: Int)
+}
+
 final class RecentlyAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "RecentlyAudioBookTableViewCell"
     
+    var delegate: RecentlyAudioBookCollectionViewCellDelegate?
     
     lazy var recentlyAudioBookCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -39,7 +44,7 @@ final class RecentlyAudioBookTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCollectionView() {
+    func registerCollectionView() {
         recentlyAudioBookCollectionView.register(RecommandAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: RecommandAudioBookCollectionViewCell.identifier)
     }
     
@@ -74,6 +79,14 @@ extension RecentlyAudioBookTableViewCell: UICollectionViewDataSource {
             return UICollectionViewCell()}
         recentlyAudioBookViewCell.dataBind(model: recommandAudioBookDummyData[indexPath.row])
         return recentlyAudioBookViewCell
+    }
+}
+
+extension RecentlyAudioBookTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            delegate.selectedRecentlyAudioBookCollectionViewCell(UITableView(), indexPath.item)
+        }
     }
 }
 

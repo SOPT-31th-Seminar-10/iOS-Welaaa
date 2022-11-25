@@ -10,10 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
+protocol MonthAudioBookCollectionViewCellDelegate {
+    func selectedMonthAudioBookCollectionViewCell(_ tableView: UITableView, _ index: Int)
+}
+
 final class MonthAudioBookTableViewCell: UITableViewCell {
     
     static let identifier = "MonthAudioBookTableViewCell"
     
+    var delegate: MonthAudioBookCollectionViewCellDelegate?
     
     lazy var monthAudioBookCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -39,7 +44,7 @@ final class MonthAudioBookTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCollectionView() {
+    func registerCollectionView() {
         monthAudioBookCollectionView.register(MonthAudioBookCollectionViewCell.self, forCellWithReuseIdentifier: MonthAudioBookCollectionViewCell.identifier)
     }
     
@@ -77,3 +82,10 @@ extension MonthAudioBookTableViewCell: UICollectionViewDataSource {
     }
 }
 
+extension MonthAudioBookTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            delegate.selectedMonthAudioBookCollectionViewCell(UITableView(), indexPath.item)
+        }
+    }
+}

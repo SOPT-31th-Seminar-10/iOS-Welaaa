@@ -23,9 +23,6 @@ final class BookDetailView: BaseView {
         
         $0.isScrollEnabled = false
         $0.showsVerticalScrollIndicator = false
-        
-        $0.delegate = self
-        $0.dataSource = self
     }
     
     

@@ -14,7 +14,6 @@ final class PlaylistTableViewCell: UITableViewCell {
     
     static let identifier = "PlaylistTableViewCell"
     
-    
     lazy var playlistCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
@@ -22,8 +21,11 @@ final class PlaylistTableViewCell: UITableViewCell {
         
         $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
-        $0.delegate = self
-        $0.dataSource = self
+        
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,20 +33,21 @@ final class PlaylistTableViewCell: UITableViewCell {
         
         setupView()
         setConstraints()
-        registerCollectionView()
+        //registerCollectionView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func registerCollectionView() {
+    func registerCollectionView() {
+        playlistCollectionView.delegate = self
+        playlistCollectionView.dataSource = self
         playlistCollectionView.register(PlaylistCollectionViewCell.self, forCellWithReuseIdentifier: PlaylistCollectionViewCell.identifier)
     }
     
     private func setupView() {
         contentView.addSubview(playlistCollectionView)
-//        contentView.backgroundColor = .blue
     }
     
     private func setConstraints() {
@@ -55,17 +58,12 @@ final class PlaylistTableViewCell: UITableViewCell {
             $0.height.equalTo(149)
         }
     }
-    
 }
 
 extension PlaylistTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 220, height: 105)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
 }
 
 extension PlaylistTableViewCell: UICollectionViewDataSource {
@@ -80,4 +78,3 @@ extension PlaylistTableViewCell: UICollectionViewDataSource {
         return playlistCell
     }
 }
-

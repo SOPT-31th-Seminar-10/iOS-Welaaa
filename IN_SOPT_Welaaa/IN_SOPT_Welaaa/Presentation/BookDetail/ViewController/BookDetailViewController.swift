@@ -11,20 +11,28 @@ final class BookDetailViewController: BaseViewController {
     
     private lazy var bookDetailView = BookDetailView()
     
-    
     override func loadView() {
         self.view = bookDetailView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bookDetailView.scrollView.delegate = self
         registerTableView()
+        bookDetailView.bookIntroductionView.backButton.addTarget(self, action: #selector(touchupBackButton), for: .touchUpInside)
+    }
+    
+    @objc
+    private func touchupBackButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension BookDetailViewController {
     private func registerTableView() {
+        
+        bookDetailView.bookDetailTableView.delegate = self
+        bookDetailView.bookDetailTableView.dataSource = self
+        
         bookDetailView.bookDetailTableView.register(SeriesTableViewCell.self, forCellReuseIdentifier: SeriesTableViewCell.identifier)
         
         bookDetailView.bookDetailTableView.register(BookImageTableViewCell.self, forCellReuseIdentifier: BookImageTableViewCell.identifier)
@@ -39,7 +47,7 @@ extension BookDetailViewController {
     }
 }
 
-extension BookDetailView: UITableViewDelegate {
+extension BookDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.section {
@@ -59,14 +67,10 @@ extension BookDetailView: UITableViewDelegate {
             return 0
         }
     }
-    
-    //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 20
-    //    }
 }
 
 
-extension BookDetailView: UITableViewDataSource {
+extension BookDetailViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
