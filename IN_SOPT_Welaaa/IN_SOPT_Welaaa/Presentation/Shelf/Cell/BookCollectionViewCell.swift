@@ -11,15 +11,13 @@ import Kingfisher
 import SnapKit
 import Then
 
-
 class BookCollectionViewCell: UICollectionViewCell {
      
     static let identifier = "BookCollectionViewCell"
     
     private let bookImage = UIImageView()
     
-    
-    private let bookName = UILabel().then {
+    private let bookNameLabel = UILabel().then {
         $0.font = .font(.pretendardSemibold, ofSize: 14)
         $0.textColor = Color.gray600
     }
@@ -39,11 +37,10 @@ class BookCollectionViewCell: UICollectionViewCell {
     }
 }
 
-
 extension BookCollectionViewCell {
     
     private func layout() {
-        [bookImage, bookName, authorName].forEach {
+        [bookImage, bookNameLabel, authorName].forEach {
             contentView.addSubview($0)
         }
         
@@ -53,24 +50,22 @@ extension BookCollectionViewCell {
             $0.height.equalTo(154)
         }
         
-        bookName.snp.makeConstraints {
+        bookNameLabel.snp.makeConstraints {
             $0.top.equalTo(bookImage.snp.bottom).offset(10)
             $0.leading.equalTo(bookImage)
         }
         
-        
         authorName.snp.makeConstraints {
-            $0.top.equalTo(bookName.snp.bottom).offset(8)
+            $0.top.equalTo(bookNameLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
         }
     }
     
     func dataBind(model: BookDto) {
-        bookName.text = model.title
+        bookNameLabel.text = model.title
         authorName.text = model.author
         if let url = URL(string: model.image) {
             bookImage.kf.setImage(with: url)
         }
     }
-    
 }

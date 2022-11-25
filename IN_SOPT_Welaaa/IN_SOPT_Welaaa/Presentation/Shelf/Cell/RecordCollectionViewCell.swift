@@ -13,12 +13,10 @@ class RecordCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "RecordCollectionViewCell"
     
-    
     private let titleLabel = UILabel().then {
         $0.font = .font(.pretendardRegular, ofSize: 12)
         $0.textColor = Color.gray600
-        }
-    
+    }
     
     private let subLabel = UILabel().then {
         $0.font = .font(.pretendardMedium
@@ -41,9 +39,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     }
 }
 
-
 extension RecordCollectionViewCell {
-    
     
     private func layout() {
         [titleLabel, subLabel, guidLine].forEach {
@@ -53,7 +49,6 @@ extension RecordCollectionViewCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(19)
             $0.centerX.equalToSuperview()
-            
         }
         
         subLabel.snp.makeConstraints {

@@ -137,7 +137,7 @@ extension ShelfViewController {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        
+
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
