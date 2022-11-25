@@ -93,6 +93,10 @@
 		ECCCDCBA292E075500E7F571 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCDCB9292E075500E7F571 /* Category.swift */; };
 		ECCCDCBC292E1E4B00E7F571 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCDCBB292E1E4B00E7F571 /* URLs.swift */; };
 		ECCCDCBE292E1E5F00E7F571 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCDCBD292E1E5F00E7F571 /* GenericResponse.swift */; };
+		ECE96493293104610044CA8F /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE96490293104610044CA8F /* BookCollectionViewCell.swift */; };
+		ECE96494293104610044CA8F /* ShelfCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE96491293104610044CA8F /* ShelfCategoryCollectionViewCell.swift */; };
+		ECE96495293104610044CA8F /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE96492293104610044CA8F /* RecordCollectionViewCell.swift */; };
+		ECE96497293104700044CA8F /* FetchBookListResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE96496293104700044CA8F /* FetchBookListResponseDto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +203,10 @@
 		ECCCDCB9292E075500E7F571 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ECCCDCBB292E1E4B00E7F571 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		ECCCDCBD292E1E5F00E7F571 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		ECE96490293104610044CA8F /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECE96491293104610044CA8F /* ShelfCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelfCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECE96492293104610044CA8F /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECE96496293104700044CA8F /* FetchBookListResponseDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchBookListResponseDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +580,10 @@
 		ECA424F2291FCC34004DFDAF /* Shelf */ = {
 			isa = PBXGroup;
 			children = (
+				ECE96496293104700044CA8F /* FetchBookListResponseDto.swift */,
+				ECE96490293104610044CA8F /* BookCollectionViewCell.swift */,
+				ECE96492293104610044CA8F /* RecordCollectionViewCell.swift */,
+				ECE96491293104610044CA8F /* ShelfCategoryCollectionViewCell.swift */,
 				ECA424F7291FCC89004DFDAF /* View */,
 			);
 			path = Shelf;
@@ -829,6 +841,7 @@
 				D274D6C6292E4C46009507B0 /* RelatedKeywordCollectionViewCell.swift in Sources */,
 				D2CE47C729292ABB004D51F0 /* BookInformationView.swift in Sources */,
 				D2F67A1A2924AD80009A959C /* PlaylistCollectionViewCell.swift in Sources */,
+				ECE96494293104610044CA8F /* ShelfCategoryCollectionViewCell.swift in Sources */,
 				ECCCDCB1292E03A300E7F571 /* CategoryService.swift in Sources */,
 				ECA424F6291FCC77004DFDAF /* SettingViewController.swift in Sources */,
 				ECA424C7291F8D54004DFDAF /* BaseViewController.swift in Sources */,
@@ -852,10 +865,12 @@
 				D2CE47D7292B2D6C004D51F0 /* BookImageCollectionViewCell.swift in Sources */,
 				D274D72B2930D8DC009507B0 /* Book.swift in Sources */,
 				D2CE47DF292B4E24004D51F0 /* BookImageModel.swift in Sources */,
+				ECE96495293104610044CA8F /* RecordCollectionViewCell.swift in Sources */,
 				D274D6DE292F427E009507B0 /* BookDetailSectionView.swift in Sources */,
 				D27091D1292DE50F00DB1F13 /* CALayer + Extension.swift in Sources */,
 				D2CE47D52929532E004D51F0 /* SeriesModel.swift in Sources */,
 				ECA424D5291F8E80004DFDAF /* TabBarItem.swift in Sources */,
+				ECE96497293104700044CA8F /* FetchBookListResponseDto.swift in Sources */,
 				D274D6E029304B73009507B0 /* RecommandContentCollectionViewCell.swift in Sources */,
 				D2CE47C529292A86004D51F0 /* BookIntroductionView.swift in Sources */,
 				D2F67A1629249143009A959C /* HomeNavigationViewCell.swift in Sources */,
@@ -875,6 +890,7 @@
 				D274D7322930DA92009507B0 /* BookService.swift in Sources */,
 				D2CE47D9292B2DC5004D51F0 /* SeriesColletionViewCell.swift in Sources */,
 				D2F67A232924B05A009A959C /* PlaylistModel.swift in Sources */,
+				ECE96493293104610044CA8F /* BookCollectionViewCell.swift in Sources */,
 				ECCCDCB8292E061A00E7F571 /* NetworkResult.swift in Sources */,
 				ECA424FF291FCE5B004DFDAF /* UITabBar + Extension.swift in Sources */,
 				D2643291292D9FB10092606F /* HomeFooterAdViewCell.swift in Sources */,
